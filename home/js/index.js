@@ -1,14 +1,11 @@
-function OpenGrade1Workspace()
-{
+function OpenGrade1Workspace() {
     location.href="../workspace/index.html"
 }
 
-function OpenGrade6Workspace()
-{
+function OpenGrade6Workspace() {
     location.href="../workspace/index.html"
 }
 
-function OpenGrade9Workspace()
-{
+function OpenGrade9Workspace() {
     location.href="../workspace/index.html"
 }

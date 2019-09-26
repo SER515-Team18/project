@@ -3,6 +3,7 @@
 <head></head>
 
 <body>
+  <script type="text/javascript" src="widgets/js/index.js"></script>
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#">
             SER 515 - Team 18
@@ -16,12 +17,13 @@
 
              <div class="button">
               <p>Operators</p><br>
-              <input type="button" id="addition" value="+"> &nbsp; &nbsp;
-              <input type="button" id="subtraction" value="-"> &nbsp; &nbsp;
-              <input type="button" id="multiplication" value="*"> &nbsp; &nbsp;
-              <input type="button" id="division" value="/"> &nbsp; &nbsp;
+              <input type="button" id="addition" value="+" onclick="addvalueToWorkSpace(this.id)"> &nbsp; &nbsp;
+              <input type="button" id="subtraction" value="-" onclick="addvalueToWorkSpace(this.id)"> &nbsp; &nbsp;
+              <input type="button" id="multiplication" value="*" onclick="addvalueToWorkSpace(this.id)"> &nbsp; &nbsp;
+              <input type="button" id="division" value="/" onclick="addvalueToWorkSpace(this.id)"> &nbsp; &nbsp;
              </div>
               <div class="button">
+              <p>Numbers</p><br>
               <input type="button" id="number1" value="1"> &nbsp; &nbsp;
               <input type="button" id="number2" value="2"> &nbsp; &nbsp;
               <input type="button" id="number3" value="3"> &nbsp; &nbsp;
@@ -37,6 +39,7 @@
 
             <div class="col-md-3" style = "overflow: scroll;">
                 Workspace
+                <p align="center" id="workspace"> </p>
             </div>
             <div class="col-md-3" style = "overflow: scroll;">
                 Result

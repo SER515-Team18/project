@@ -3,7 +3,10 @@ function remove_operator(id) {
 	element.parentNode.removeChild(element);
 }
 
-
+$("body").on('DOMSubtreeModified', ".mainSection", function() {
+	var grade = 1;
+	updateResult(grade);
+});
 
 
 

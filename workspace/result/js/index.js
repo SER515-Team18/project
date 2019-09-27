@@ -20,6 +20,12 @@ function evaluateResult(grade, evalText) {
 }
 
 function evalGradeOne(evalText) {
-    var result = eval(evalText);
-    $("#mathResult").html(result);
+    try {
+        var result = eval(evalText);
+        $("#mathResult").html(result);
+    } catch (e) {
+        if (e instanceof SyntaxError) {
+            $("#mathResult").html(e.message);
+        }
+    }
 }

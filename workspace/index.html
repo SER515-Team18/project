@@ -1,47 +1,106 @@
 <html>
 
 <head></head>
+<link rel="stylesheet" type="text/css" href="main/css/index.css">
+<link rel="stylesheet" href="../lib/css/bootstrap.min.css">
 
 <body>
-    <nav class="navbar navbar-light bg-light">
+
+    <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
             SER 515 - Team 18
         </a>
     </nav>
     <div class="container-fluid">
-        <div class="row">
+        <div class="row" id="workspaceSections">
 
-            <div class="col-md-3">
-                Widgets
+            <div class="col-md-3 widgetSection">
+                <div class="row navbar">
+                    <div class="col">Widgets</div>
+                </div>
 
+                <div>
+                    <p>Operators</p>
+                    <div class="row">
+                        
+                        <div class="col-1">
+                            <input type="button" id="addition" value="+" onclick="addvalueToWorkSpace(this.id)"> &nbsp;
+                        </div>
+                        <div class="col-1">
+                            <input type="button" id="subtraction" value="-" onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+                        <div class="col-1">
+                            <input type="button" id="multiplication" value="*" onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+                        <div class="col-1">
+                            <input type="button" id="division" value="/" onclick="addvalueToWorkSpace(this.id)"> &nbsp;
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <p>Numbers</p>
+                    <div class="row">
+                        <div class="col-1">
+                            <input type="button" id="number1" value="1" onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+                        <div class="col-1">
+                            <input type="button" id="number2" value="2" onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+                        <div class="col-1">
+                            <input type="button" id="number3" value="3" onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+                        <div class="col-1">
+                            <input type="button" id="number4" value="4" onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+                        <div class="col-1">
+                            <input type="button" id="number5" value="5" onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+                        <div class="col-1">
+                            <input type="button" id="number6" value="6" onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+                        <div class="col-1">
+                            <input type="button" id="number7" value="7" onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+                        <div class="col-1">
+                            <input type="button" id="number8" value="8" onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+                        <div class="col-1">
+                            <input type="button" id="number9" value="9" onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+                        <div class="col-1">
+                            <input type="button" id="number0" value="0" onclick="addvalueToWorkSpace(this.id)">
+
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-3" style = "overflow: scroll;">
-                Workspace
+
+            <div class="col-md-3 mainSection">
+                <div class="row navbar">
+                    <div class="col">Workspace</div>
+                </div>   
+                <p align="center" id="workspace"> </p>
             </div>
-            <div class="col-md-3">
-                Result
+            <div class="col-md-3 resultSection">
+                <div class="row navbar">
+                    <div class="col">Result</div>
+                </div> 
+                <div id="mathResult"></div>
             </div>
-            <div class="col-md-3">
-                History
+            <div class="col-md-3 ">
+                <div class="row navbar">
+                    <div class="col">History</div>
+                </div> 
             </div>
         </div>
     </div>
 </body>
 
 </html>
-<style>
-    .container-fluid {
-        margin: 0 !important;
-    }
 
-    div {
-        height: 100%;
-        border-left: 1px #ced4da solid;
-        border-right: 1px #ced4da solid;
-    }
-</style>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
+<script src="../lib/js/jquery-3.4.1.min.js"></script>
+<script src="../lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="widgets/js/index.js"></script>
+<script type="text/javascript" src="main/js/index.js"></script>
+<script type="text/javascript" src="result/js/index.js"></script>

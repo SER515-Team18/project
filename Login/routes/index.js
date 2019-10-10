@@ -12,4 +12,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>
   })
 );
 
+
+router.get('/' , (req, res) => res.render('welcome'));
+		  
 module.exports = router;

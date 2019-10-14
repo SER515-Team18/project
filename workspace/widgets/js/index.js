@@ -1,7 +1,8 @@
 function addvalueToWorkSpace (id) {
     	
 	var ele = document.getElementById(id);
-    loadworkspace(ele);
+	loadworkspace(ele);
+	
 }
 
 function loadworkspace (ele){
@@ -15,3 +16,4 @@ function loadworkspace (ele){
     work.appendChild(button);
 
 }
+

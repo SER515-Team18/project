@@ -4,7 +4,7 @@ function remove_operator(id) {
 }
 
 $("body").on('DOMSubtreeModified', ".mainSection", function() {
-	var grade = 1;
+	var grade = 6;
 	updateResult(grade);
 });
 

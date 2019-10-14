@@ -5,7 +5,6 @@ function addvalueToWorkSpace (id) {
 }
 
 function loadworkspace (ele){
-
 	
 	var button=document.createElement("BUTTON");
 	var node=document.createTextNode(ele.value);

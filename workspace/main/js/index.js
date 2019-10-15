@@ -9,6 +9,12 @@ $("body").on('DOMSubtreeModified', ".mainSection", function() {
 	
 });
 
+ $("body").on('DOMSubtreeModified', ".resultSection", function() {
+	
+ 	loadHistory();
+	
+ });
+
 
 
 

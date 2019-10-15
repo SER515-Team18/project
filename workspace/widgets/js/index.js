@@ -2,7 +2,7 @@ function addvalueToWorkSpace (id) {
     	
 	var ele = document.getElementById(id);
 	loadworkspace(ele);
-	
+	loadHistory(ele);
 }
 
 function loadworkspace (ele){

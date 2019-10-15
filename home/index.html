@@ -4,12 +4,39 @@
 <body>
   <script type="text/javascript" src="js/index.js"></script>
   <h1 align ="left">Learning Math is Fun!</h1>
-  <table align="center">
-  <tr> <th> <h3>Select your grade</h3> </th> </tr>
-  <tr> <td align="center"><button type="button" style="background-color:powderblue;" id="Grade1" onclick="OpenGrade1Workspace()">1st Grade Student</button></td></tr>
- <tr> <td align="center"> <button type="button" style="background-color:powderblue;" id="Grade6" onclick="OpenGrade6Workspace()">6th Grade Student</button></td> </tr>
-  <tr><td align="center"><button type="button" style="background-color:powderblue;" id="Grade9" onclick="OpenGrade9Workspace()">9th Grade Student</button></td></tr>
-</table>
 
+<form accept-charset="UTF-8"  onsubmit="OpenGrade1Workspace()">
+  <div>
+    <label for="Email">Email</label>
+    <div>
+      <input type="email" id="Email" placeholder="Email">
+    </div>
+  </div>
+  <div>
+    <label for="Password">Password</label>
+    <div>
+      <input type="password" id="Password" placeholder="Password">
+    </div>
+  </div>
+  <div>
+      <label for="selectbox">Choose Your Grade</label>
+      <div>
+  <select id="selectbox" name="Grades">
+    <option value="Grade1" selected>Grade 1</option>
+    <option value="Grade6">Grade 6</option>
+    <option value="Grade9">Grade 9</option>
+  </select>
+  </div>
+</div>
+  <div>
+    <div>
+      <button type="submit">Login</button>
+      <button type="button" onclick="LoadRegistrationForm()">Register</button>
+    </div>
+    <div>
+      
+    </div>
+  </div>
+</form>
 </body>
 </html>

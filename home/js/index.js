@@ -1,5 +1,7 @@
 function OpenGrade1Workspace() {
+    
     location.href="../workspace/index.html"
+    
 }
 
 function OpenGrade6Workspace() {
@@ -8,4 +10,8 @@ function OpenGrade6Workspace() {
 
 function OpenGrade9Workspace() {
     location.href="../workspace/index.html"
+}
+
+function LoadRegistrationForm(){
+    location.href="./register.html"
 }

@@ -10,7 +10,7 @@ function fetchResultText() {
 
 function evaluateResult(grade, evalText) {
     switch (grade) {
-        case 1:
+        case 1,6:
             evalGradeOne(evalText);
             break;
 

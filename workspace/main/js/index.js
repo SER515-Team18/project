@@ -9,11 +9,11 @@ $("body").on('DOMSubtreeModified', ".mainSection", function() {
 	
 });
 
- $("body").on('DOMSubtreeModified', ".resultSection", function() {
+  $("body").on('DOMSubtreeModified', ".widgetSection", function() {
 	
- 	loadHistory();
+  	loadHistory();
 	
- });
+  });
 
 
 

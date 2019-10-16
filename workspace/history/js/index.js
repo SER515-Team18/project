@@ -1,12 +1,12 @@
 function fetchHistory() {
-    return $("#workspace").html();
+    return $("#workspace").text();
 }
 
 function loadHistory()
 {
     var resultStr = fetchHistory();
     
-    $("#widgetActivity").append(resultStr,"added","<br/>"); 
+    $("#widgetActivity").append(resultStr,"<br/>"); 
       
 }
 

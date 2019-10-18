@@ -19,7 +19,7 @@
                     <div class="col">Widgets</div>
                 </div>
 
-                <div>
+                <div id=Operators>
                     <p>Operators</p>
                     <div class="row">
                         
@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                <div>
+                <div id=Numbers>
                     <p>Numbers</p>
                     <div class="row">
                         <div class="col-1">
@@ -75,7 +75,7 @@
                 </div>
                 <div id="grade6">
                     <p>Brackets</p>
-                    <div class="row">
+                    <div class="row" id=Brackets>
                         
                         <div class="col-1">
                             <input type="button" id="openBracket" value="(" onclick="addvalueToWorkSpace(this.id)"> &nbsp;
@@ -99,10 +99,12 @@
                 </div> 
                 <div id="mathResult"></div>
             </div>
-            <div class="col-md-3 ">
+            <div class="col-md-3 historySection">
                 <div class="row navbar">
                     <div class="col">History</div>
                 </div> 
+                <div id="widgetActivity"></div>
+                
             </div>
         </div>
     </div>
@@ -115,3 +117,4 @@
 <script type="text/javascript" src="widgets/js/index.js"></script>
 <script type="text/javascript" src="main/js/index.js"></script>
 <script type="text/javascript" src="result/js/index.js"></script>
+<script type="text/javascript" src="history/js/index.js"></script>

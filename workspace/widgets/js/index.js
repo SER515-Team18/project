@@ -1,7 +1,8 @@
 function addvalueToWorkSpace (id) {
     	
 	var ele = document.getElementById(id);
-    loadworkspace(ele);
+	loadworkspace(ele);
+	
 }
 
 function loadworkspace (ele){
@@ -12,10 +13,9 @@ function loadworkspace (ele){
 	button.setAttribute("id", ele.value);
 	button.setAttribute("ondblclick","remove_operator(this.id)");
 	var work=document.getElementById("workspace");
-    work.appendChild(button);
-
+	work.appendChild(button);
+	
 }
-
 var workspaceSection = document.querySelector(".mainSection");
 var widgets = document.querySelectorAll(".col-1");
 

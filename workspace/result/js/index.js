@@ -1,7 +1,7 @@
 function updateResult(grade) {
     var resultStr = fetchResultText();
     evaluateResult(grade, resultStr);
-
+    
 }
 
 function fetchResultText() {

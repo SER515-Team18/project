@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
-
 // Load User model
 const User = require('../models/User');
 const { forwardAuthenticated } = require('../config/auth');
@@ -22,11 +21,16 @@ router.get('/register', forwardAuthenticated, (req, res) => res.render('register
 
 // Register
 router.post('/register', (req, res) => {
-  const { name, email, password, password2 } = req.body;
+	
+  const { name, email, grade, password, password2 } = req.body;
   let errors = [];
 
-  if (!name || !email || !password || !password2) {
+  if (!name || !email || !password || !password2 || !grade) {
     errors.push({ msg: 'Please enter all fields' });
+  }
+  
+  if (grade < '1' || grade > '12'){
+		errors.push({msg: 'Please enter a valid grade'});
   }
 
   if (password != password2) {
@@ -42,6 +46,7 @@ router.post('/register', (req, res) => {
       errors,
       name,
       email,
+	    grade,
       password,
       password2
     });
@@ -53,6 +58,7 @@ router.post('/register', (req, res) => {
           errors,
           name,
           email,
+		      grade,
           password,
           password2
         });
@@ -60,6 +66,7 @@ router.post('/register', (req, res) => {
         const newUser = new User({
           name,
           email,
+		      grade,
           password
         });
 
@@ -86,9 +93,11 @@ router.post('/register', (req, res) => {
 
 // Login
 router.post('/login', (req, res, next) => {
+	console.log(__dirname);
   passport.authenticate('local', {
-    successRedirect: res.sendFile(path.join(__dirname, '../../workspace/index.ejs')),
-    failureRedirect: '/users/login',
+	
+    successRedirect:  res.sendFile(path.join(__dirname, '../../workspace/index.html')),
+    failureRedirect: '../../workspace/',
     failureFlash: true
   })(req, res, next);
 });

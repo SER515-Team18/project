@@ -28,6 +28,19 @@
             value="<%= typeof email != 'undefined' ? email : '' %>"
           />
         </div>
+		<div class="form-group">
+          <label for="email">Grade</label>
+          <div class="dropdown">
+		  <button class="btn btn-secondary btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			  Please select grade
+		  </button>
+		  <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+			<button class="dropdown-item" type="button">Grade 1</button>
+    		<button class="dropdown-item" type="button">Grade 6</button>
+    		<button class="dropdown-item" type="button">Grade 9</button>
+		  </div>
+		</div>
+        </div>
         <div class="form-group">
           <label for="password">Password</label>
           <input

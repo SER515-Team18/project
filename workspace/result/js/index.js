@@ -1,7 +1,7 @@
 function updateResult(grade) {
     var resultStr = fetchResultText();
     evaluateResult(grade, resultStr);
-
+    
 }
 
 function fetchResultText() {
@@ -10,7 +10,7 @@ function fetchResultText() {
 
 function evaluateResult(grade, evalText) {
     switch (grade) {
-        case 1:
+        case 1,6:
             evalGradeOne(evalText);
             break;
 

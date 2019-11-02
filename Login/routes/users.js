@@ -6,12 +6,6 @@ const passport = require('passport');
 const User = require('../models/User');
 const { forwardAuthenticated } = require('../config/auth');
 
-const path = require ('path');
-const app = express();
-app.use(express.static(path.join(__dirname, '../../workspace')));
-
-
-
 
 // Login Page
 router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
@@ -95,9 +89,8 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res, next) => {
 	console.log(__dirname);
   passport.authenticate('local', {
-	
-    successRedirect:  res.sendFile(path.join(__dirname, '../../workspace/index.html')),
-    failureRedirect: '../../workspace/',
+    successRedirect:  res.render('./workspace/index'),
+    failureRedirect: '/dashboard',
     failureFlash: true
   })(req, res, next);
 });

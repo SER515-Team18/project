@@ -22,7 +22,7 @@
                 <div>
                     <p>Operators</p>
                     <div class="row">
-                        
+
                         <div class="col-1">
                             <input type="button" id="addition" value="+" onclick="addvalueToWorkSpace(this.id)"> &nbsp;
                         </div>
@@ -34,6 +34,9 @@
                         </div>
                         <div class="col-1">
                             <input type="button" id="division" value="/" onclick="addvalueToWorkSpace(this.id)"> &nbsp;
+                        </div>
+                        <div class="col-1">
+                            <input type="button" id="equalto" value="=" onclick="addvalueToWorkSpace(this.id)"> &nbsp;
                         </div>
                     </div>
                 </div>
@@ -78,12 +81,14 @@
                 <div id="grade6">
                     <p>Paranthesis</p>
                     <div class="row">
-                        
+
                         <div class="col-1">
-                            <input type="button" id="left_Paranthesis" value="(" onclick="addvalueToWorkSpace(this.id)"> &nbsp;
+                            <input type="button" id="left_Paranthesis" value="(" onclick="addvalueToWorkSpace(this.id)">
+                            &nbsp;
                         </div>
                         <div class="col-1">
-                            <input type="button" id="right_paranthesis" value=")" onclick="addvalueToWorkSpace(this.id)"> 
+                            <input type="button" id="right_paranthesis" value=")"
+                                onclick="addvalueToWorkSpace(this.id)">
                         </div>
                     </div>
                 </div>
@@ -170,25 +175,60 @@
                             &nbsp;
                         </div>
                     </div>
+                    <p>Other functions</p>
+                    <div class="row">
+                        <div class="col-2">
+                            <input type="button" id="func-cos" value="cos" onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+                        <div class="col-2">
+                            <input type="button" id="func-sin" value="sin" onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+                        <div class="col-2">
+                            <input type="button" id="func-tan" value="tan" onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+                        <div class="col-2">
+                            <input type="button" id="func-sqrt" value="sqrt" onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+
+                    </div>
+                    <br />
+                    <p>Helpers </p>
+                    <div class="row">
+                        <div class="col-2">
+                            <input type="button" id="help-deg" value="deg" onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+                        <div class="col-3">
+                            <input type="button" id="help-new" value="new line" onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+                        <div class="col-1">
+                            <input type="button" id="left_Paranthesis" value="(" onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+                        <div class="col-2">
+                            <input type="button" id="right_paranthesis" value=")"
+                                onclick="addvalueToWorkSpace(this.id)">
+                        </div>
+
+                    </div>
+                    <br />
                 </div>
             </div>
 
             <div class="col-md-3 mainSection">
                 <div class="row navbar">
                     <div class="col">Workspace</div>
-                </div>   
+                </div>
                 <p align="center" id="workspace"> </p>
             </div>
             <div class="col-md-3 resultSection">
                 <div class="row navbar">
                     <div class="col">Result</div>
-                </div> 
+                </div>
                 <div id="mathResult"></div>
             </div>
             <div class="col-md-3 ">
                 <div class="row navbar">
                     <div class="col">History</div>
-                </div> 
+                </div>
             </div>
         </div>
     </div>
@@ -201,3 +241,4 @@
 <script type="text/javascript" src="widgets/js/index.js"></script>
 <script type="text/javascript" src="main/js/index.js"></script>
 <script type="text/javascript" src="result/js/index.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.2/math.min.js"></script>

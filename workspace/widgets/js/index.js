@@ -22,7 +22,7 @@ function createNewLine() {
 }
 
 var workspaceSection = document.querySelector(".mainSection");
-var widgets = document.querySelectorAll(".col-1");
+var widgets = document.querySelectorAll('[draggable="true"]');
 
 
 for (let i = 0; i < widgets.length; i++) {

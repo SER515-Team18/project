@@ -12,3 +12,7 @@ div#workspaceSections {
     border-right: 1px #ced4da solid;
 
 }
+
+.col-1 input {
+    width: 25px;
+}

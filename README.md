@@ -17,3 +17,5 @@ Operators, Numbers, Variables, other functions and helpers will be displayed in 
 
 Note:
 Disable the "Block third-party cookies" setting in Google chrome browser.
+
+Deliverable 3 Video link: https://youtu.be/c-sKlzNiWjE

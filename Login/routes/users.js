@@ -86,14 +86,11 @@ router.post('/register', (req, res) => {
 });
 
 // Login
-router.post('/login', (req, res, next) => {
-	console.log(__dirname);
-  passport.authenticate('local', {
-    successRedirect:  res.render('./workspace/index'),
-    failureRedirect: '/dashboard',
-    failureFlash: true
-  })(req, res, next);
-});
+router.post('/login',
+  passport.authenticate('local'),  
+    function(req, res) {
+    res.render('index', {'grade':req.user.grade} );
+  });
 
 // Logout
 router.get('/logout', (req, res) => {

@@ -23,7 +23,7 @@ router.post('/register', (req, res) => {
     errors.push({ msg: 'Please enter all fields' });
   }
   
-  if (grade < '1' || grade > '12'){
+  if (grade != '1' && grade != '6' && grade != '9'){
 		errors.push({msg: 'Please enter a valid grade'});
   }
 
@@ -89,6 +89,7 @@ router.post('/register', (req, res) => {
 router.post('/login',
   passport.authenticate('local'),  
     function(req, res) {
+      console.log(req.user);
     res.render('index', {'grade':req.user.grade} );
   });
 

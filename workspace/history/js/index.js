@@ -9,7 +9,8 @@ function fetchHistory() {
 function loadHistory() {
 
     var resultStr = fetchHistory();
-    $("#widgetActivity").append(resultStr, "<br/>");
+    if (resultStr != undefined)
+        $("#widgetActivity").append(resultStr, "<br/>");
 
 }
 
@@ -25,7 +26,7 @@ $(window).on('load', function () {
     if (sessionStorage.getItem("HistoryContent") != "") {
         HistoryString = sessionStorage.getItem('HistoryContent');
         if (HistoryString != null )
-            $("#widgetActivity").append(HistoryString);
+            $("#widgetActivity").html(HistoryString);
     }
 });
 

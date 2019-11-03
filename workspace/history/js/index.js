@@ -21,8 +21,9 @@ $(window).on('beforeunload', function () {
 });
 
 $(window).on('load', function () {
+    var HistoryString;
     if (sessionStorage.getItem("HistoryContent") != "") {
-        var HistoryString = sessionStorage.getItem('HistoryContent');
+        HistoryString = sessionStorage.getItem('HistoryContent');
         if (HistoryString != null )
             $("#widgetActivity").append(HistoryString);
     }

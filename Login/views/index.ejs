@@ -1,6 +1,7 @@
 <html>
 
 <head></head>
+
 <body>
 
     <nav class="navbar navbar-dark bg-dark">
@@ -8,7 +9,7 @@
             SER 515 - Team 18
         </a>
     </nav>
-    <div class="container-fluid d-flex flex-column">
+    <div class="container-fluid">
         <div class="row" id="workspaceSections">
 
             <div class="col-md-3 widgetSection">
@@ -280,25 +281,25 @@
     </div>
 </body>
 
+
 <script>
-    // Print out the variable I got
-    var grade = <%- JSON.parse(grade) %> ;
+    var grade = <%- grade %> ;
 
     switch (grade) {
         case 1:
-        document.getElementById("grade6").style.display = "none";
-        document.getElementById("grade9").style.display = "none";
+            document.getElementById("grade6").style.display = "none";
+            document.getElementById("grade9").style.display = "none";
             break;
         case 6:
-           document.getElementById("grade9").style.display = "none";
+            document.getElementById("grade9").style.display = "none";
             break;
         case 9:
-           document.getElementById("grade6").style.display = "none";
+            document.getElementById("grade6").style.display = "none";
             break;
         default:
             break;
     }
-   
-  </script>
-</html>
 
+</script>
+
+</html>

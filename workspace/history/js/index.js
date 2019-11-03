@@ -23,7 +23,8 @@ $(window).on('beforeunload', function () {
 $(window).on('load', function () {
     if (sessionStorage.getItem("HistoryContent") != "") {
         var HistoryString = sessionStorage.getItem('HistoryContent');
-        $("#widgetActivity").append(HistoryString);
+       // if (HistoryString != null )
+            $("#widgetActivity").append(HistoryString);
     }
 });
 

@@ -21,7 +21,7 @@ mongoose.connect(db, { usenewUrlParser: true })
 
 var path = require ('path');
 app.set('views', __dirname + '/views');
-app.use(express.static(path.join(__dirname + '.../Login/views')));
+app.use("/workspace", express.static(path.join(__dirname, './views/workspace')));
 
 //EJS
 app.use(expressLayouts);

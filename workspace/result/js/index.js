@@ -1,3 +1,8 @@
+/*
+* @author Hari Krishnan Puthiya Veetil
+*
+*/
+
 function updateResult(grade) {
     var resultStr = fetchResultText();
     evaluateResult(grade, resultStr);

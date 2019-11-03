@@ -1,5 +1,4 @@
 function addvalueToWorkSpace(id) {
-
 	var ele = document.getElementById(id);
 	if (id === "help-new")
 		createNewLine();
@@ -29,7 +28,13 @@ for (let i = 0; i < widgets.length; i++) {
 	widgets[i].addEventListener("dragstart", function (event) {
 		event.dataTransfer.setData("srcId", event.target.id);
 	});
+
 }
+
+workspaceSection.addEventListener('dragover', function (event) {
+  event.preventDefault()
+})
+
 
 
 workspaceSection.addEventListener('dragover', function (event) {
@@ -47,3 +52,4 @@ workspaceSection.addEventListener('drop', function (event) {
 		loadworkspace(copy);
 	}
 });
+

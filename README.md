@@ -15,7 +15,32 @@ Operators, Numbers and Paranthesis will be displayed in the Widgets
 For Grade9 Student:
 Operators, Numbers, Variables, other functions and helpers will be displayed in the Widgets
 
-Note:
-Disable the "Block third-party cookies" setting in Google chrome browser.
 
-Deliverable 3 Video link: https://youtu.be/c-sKlzNiWjE
+Deliverable 3 Video link: 
+---
+
+https://youtu.be/c-sKlzNiWjE
+
+
+Existing users in the database:
+-
+Grade-1 user:
+
+email: nandanam17@gmail.com
+password: 123456789
+
+Grade-6 user:
+
+email: kala.pedarla@gmail.com
+password: 12345
+
+Grade-9 user:
+
+email: archana@gmail.com
+password: archana
+
+Note:
+--
+Disable the "Block third-party cookies" setting in Google chrome browser
+
+Please click back button on the browser to logout 

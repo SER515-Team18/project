@@ -9,7 +9,8 @@ function fetchHistory() {
 function loadHistory() {
 
     var resultStr = fetchHistory();
-    $("#widgetActivity").append(resultStr, "<br/>");
+    if (resultStr != undefined)
+        $("#widgetActivity").append(resultStr, "<br/>");
 
     
 }
@@ -22,9 +23,11 @@ $(window).on('beforeunload', function () {
 });
 
 $(window).on('load', function () {
+    var HistoryString;
     if (sessionStorage.getItem("HistoryContent") != "") {
-        var HistoryString = sessionStorage.getItem('HistoryContent');
-        $("#widgetActivity").append(HistoryString);
+        HistoryString = sessionStorage.getItem('HistoryContent');
+        if (HistoryString != "undefined" )
+            $("#widgetActivity").html(HistoryString);
     }
 });
 

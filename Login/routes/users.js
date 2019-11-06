@@ -6,12 +6,6 @@ const passport = require('passport');
 const User = require('../models/User');
 const { forwardAuthenticated } = require('../config/auth');
 
-const path = require ('path');
-const app = express();
-app.use(express.static(path.join(__dirname, '../../workspace')));
-
-
-
 
 // Login Page
 router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
@@ -29,7 +23,7 @@ router.post('/register', (req, res) => {
     errors.push({ msg: 'Please enter all fields' });
   }
   
-  if (grade < '1' || grade > '12'){
+  if (grade != '1' && grade != '6' && grade != '9'){
 		errors.push({msg: 'Please enter a valid grade'});
   }
 
@@ -92,15 +86,12 @@ router.post('/register', (req, res) => {
 });
 
 // Login
-router.post('/login', (req, res, next) => {
-	console.log(__dirname);
-  passport.authenticate('local', {
-	
-    successRedirect:  res.sendFile(path.join(__dirname, '../../workspace/index.html')),
-    failureRedirect: '../../workspace/',
-    failureFlash: true
-  })(req, res, next);
-});
+router.post('/login',
+  passport.authenticate('local'),  
+    function(req, res) {
+      console.log(req.user);
+    res.render('index', {'grade':req.user.grade} );
+  });
 
 // Logout
 router.get('/logout', (req, res) => {

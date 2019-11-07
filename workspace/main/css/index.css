@@ -1,5 +1,6 @@
 .container-fluid {
     margin: 0 !important;
+    height: 100vh;
 }
 
 div#workspaceSections {
@@ -11,4 +12,8 @@ div#workspaceSections {
 .widgetSection {
     border-right: 1px #ced4da solid;
 
+}
+
+.col-1 input {
+    width: 25px;
 }

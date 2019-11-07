@@ -14,5 +14,10 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>
 
 
 router.get('/' , (req, res) => res.render('welcome'));
+
+router.route('/updateUser')
+ 	.get(function (req, res) {
+		res.sendFile(path + '/updateUser.ejs');
+	});
 		  
 module.exports = router;

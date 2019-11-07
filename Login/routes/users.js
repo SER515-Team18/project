@@ -13,6 +13,12 @@ router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
 // Register Page
 router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
 
+// Admin Page
+router.get('/adminDashboard', forwardAuthenticated, (req, res) => res.render('adminDashboard'));
+
+// Update User Page
+router.get('/updateUser', forwardAuthenticated, (req, res) => res.render('updateUser'));
+
 // Register
 router.post('/register', (req, res) => {
 	

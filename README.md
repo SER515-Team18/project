@@ -42,5 +42,3 @@ password: archana
 Note:
 --
 Disable the "Block third-party cookies" setting in Google chrome browser
-
-Please click back button on the browser to logout 

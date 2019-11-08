@@ -96,7 +96,7 @@ router.post('/login',
   passport.authenticate('local'),  
     function(req, res) {
       console.log(req.user);
-    res.render('index', {'grade':req.user.grade} );
+    res.render('index', {'grade':req.user.grade, user: req.user} );
   });
 
 // Logout

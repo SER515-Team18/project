@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 // Load User model
 const User = require('../models/User');
-const { forwardAuthenticated } = require('../config/auth');
+const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
 
 // Login Page
@@ -92,12 +92,21 @@ router.post('/register', (req, res) => {
 });
 
 // Login
-router.post('/login',
-  passport.authenticate('local'),  
-    function(req, res) {
-      console.log(req.user);
-    res.render('index', {'grade':req.user.grade, user: req.user} );
-  });
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', {
+    successRedirect: '/users/workspace',
+    failureRedirect: '/users/login',
+    failureFlash: true
+  })(req, res, next);
+});
+  
+// Workspace
+router.get('/workspace', ensureAuthenticated, (req, res) =>
+  res.render('index', {
+    user: req.user,
+    grade: req.user.grade
+  })
+);
 
 // Logout
 router.get('/logout', (req, res) => {

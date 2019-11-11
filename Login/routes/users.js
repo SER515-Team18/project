@@ -16,8 +16,8 @@ router.get('/register', forwardAuthenticated, (req, res) => res.render('register
 // Admin Page
 router.get('/adminDashboard', forwardAuthenticated, (req, res) => res.render('adminDashboard'));
 
-// Update User Page
-router.get('/updateUser', forwardAuthenticated, (req, res) => res.render('updateUser'));
+// Search User Page
+router.get('/searchUser', forwardAuthenticated, (req, res) => res.render('searchUser'));
 
 // Register
 router.post('/register', (req, res) => {
@@ -107,6 +107,32 @@ router.get('/workspace', ensureAuthenticated, (req, res) =>
     grade: req.user.grade
   })
 );
+
+//search User
+router.get('/searchUser',(req,res) => {
+  var { email } = req.email;
+  User.findOne({ email: email }).then(user => {
+    
+      if (user) {
+        
+        res.render('updateUser', {
+          //name,
+          email : user.email
+		      //grade,
+          //password,
+          //password2
+          
+        });
+        console.log(email)
+      } else {
+        errors.push({ msg: 'Email already exists' });
+        res.render('searchUser',{
+          errors
+        })
+          
+    }
+  }
+)});
 
 // Logout
 router.get('/logout', (req, res) => {

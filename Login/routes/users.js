@@ -117,11 +117,7 @@ router.post('/searchUser',(req,res) => {
   User.findOne({ email: email }).then(user => {
     
       if (user) {
-        res.render('updateUser', {
-          email : JSON.stringify(user.email),
-          name  : JSON.stringify(user.name)
-		              
-        });
+        res.render('updateUser', {user});
               
       } else {
         errors.push({ msg: 'Email does not exist' });

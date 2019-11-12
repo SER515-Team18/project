@@ -19,6 +19,7 @@ router.get('/adminDashboard', forwardAuthenticated, (req, res) => res.render('ad
 // Search User Page
 router.get('/searchUser', forwardAuthenticated, (req, res) => res.render('searchUser'));
 
+
 // Register
 router.post('/register', (req, res) => {
 	
@@ -109,23 +110,21 @@ router.get('/workspace', ensureAuthenticated, (req, res) =>
 );
 
 //search User
-router.get('/searchUser',(req,res) => {
-  var { email } = req.email;
+router.post('/searchUser',(req,res) => {
+  const  {email} = req.body;
+  let errors=[];
+  //console.log(email);
   User.findOne({ email: email }).then(user => {
     
       if (user) {
-        
         res.render('updateUser', {
-          //name,
-          email : user.email
-		      //grade,
-          //password,
-          //password2
-          
+          email : JSON.stringify(user.email),
+          name  : JSON.stringify(user.name)
+		              
         });
-        console.log(email)
+              
       } else {
-        errors.push({ msg: 'Email already exists' });
+        errors.push({ msg: 'Email does not exist' });
         res.render('searchUser',{
           errors
         })

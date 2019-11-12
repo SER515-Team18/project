@@ -7,9 +7,9 @@ router.get('/', forwardAuthenticated, (req, res) => res.render('welcome'));
 
 router.get('/' , (req, res) => res.render('welcome'));
 
-router.route('/updateUser')
- 	.get(function (req, res) {
-		res.sendFile(path + '/updateUser.ejs');
-	});
+// router.route('/searchUser')
+//  	.get(function (req, res) {
+// 		res.sendFile(path + '/searchUser.ejs');
+// 	});
 		  
 module.exports = router;

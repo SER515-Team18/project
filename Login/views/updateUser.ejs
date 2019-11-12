@@ -1,27 +1,41 @@
-<div class="row mt-5">
-    <div class="col-md-6 m-auto">
-      <div class="card card-body">
-        <h1 class="text-center mb-3">
-          <i class="fas fa-user-plus"></i> Update Information
-        </h1>
-        <% include ./partials/messages %>
-        <form action="/users/updateUser" method="GET">
-          <div class="form-group">
-            <label for="name">Search Name to be Updated</label>
-            <input
-              type="name"
-              id="name"
-              name="name"
-              class="form-control"
-              placeholder="Enter Name"
-              value="<%= typeof name != 'undefined' ? name : '' %>"
-            />
-          </div>
-            <button type="submit" class="btn btn-primary btn-block">
-            Search
-          </button>
-        </form>
-        
-      </div>
+
+<p>update User</p>
+
+<form action="/updateUser" method="POST">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="name"
+        id="name"
+        name="name"
+        class="form-control"
+        placeholder= <%= user.name %>
+        value="<%= typeof name != 'undefined' ? name : '' %>"
+      />
     </div>
-  </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="form-control"
+        placeholder=  <%= user.email %>
+        value="<%= typeof email != 'undefined' ? email : '' %>"
+      />
+    </div>
+        <div class="form-group">
+      <label for="grade">Grade</label>
+      <input
+        type="grade"
+        id="grade"
+        name="grade"
+        class="form-control"
+        placeholder=  <%= user.grade %>
+        value="<%= typeof grade != 'undefined' ? grade : '' %>"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">
+      Update
+    </button>
+  </form>

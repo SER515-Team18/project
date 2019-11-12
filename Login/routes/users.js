@@ -109,6 +109,10 @@ router.get('/workspace', ensureAuthenticated, (req, res) =>
   })
 );
 
+//updateUser
+router.post('/updateUser' , (req, res) =>{
+  res.render('updateUser');
+});
 //search User
 router.post('/searchUser',(req,res) => {
   const  {email} = req.body;

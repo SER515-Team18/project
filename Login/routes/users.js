@@ -17,7 +17,7 @@ router.get('/register', forwardAuthenticated, (req, res) => res.render('register
 router.get('/adminDashboard', forwardAuthenticated, (req, res) => res.render('adminDashboard'));
 
 // Search User Page
-router.get('/searchUser', forwardAuthenticated, (req, res) => res.render('searchUser'));
+router.get('/searchUser', (req, res) => res.render('searchUser'));
 
 
 // Register
@@ -110,14 +110,30 @@ router.get('/workspace', ensureAuthenticated, (req, res) =>
 );
 
 //updateUser
-router.post('/updateUser' , (req, res) =>{
-  res.render('updateUser');
+router.post('/updateUser/:id' , (req, res) =>{
+   let updates = {};
+   updates.name = req.body.name;
+   updates.email = req.body.email;
+   updates.grade = req.body.grade;
+
+   let query = {_id:req.params.id};
+
+   User.updateOne(query, updates, function(err){
+          if(err){
+            console.log(err);
+            return;
+          }
+          else{
+            res.redirect('/users/adminDashboard');
+          }
+   });
 });
+
 //search User
 router.post('/searchUser',(req,res) => {
   const  {email} = req.body;
   let errors=[];
-  //console.log(email);
+  
   User.findOne({ email: email }).then(user => {
     
       if (user) {

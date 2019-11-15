@@ -10,7 +10,7 @@
         name="name"
         class="form-control"
         placeholder= <%= user.name %>
-        value="<%= typeof name != 'undefined' ? name : '' %>"
+        value="<%= typeof name != 'undefined' ? name : user.name %>"
       />
     </div>
     <div class="form-group">
@@ -21,7 +21,7 @@
         name="email"
         class="form-control"
         placeholder=  <%= user.email %>
-        value="<%= typeof email != 'undefined' ? email : '' %>"
+        value="<%= typeof email != 'undefined' ? email : user.email %>"
       />
     </div>
         <div class="form-group">
@@ -32,7 +32,7 @@
         name="grade"
         class="form-control"
         placeholder=  <%= user.grade %>
-        value="<%= typeof grade != 'undefined' ? grade : '' %>"
+        value="<%= typeof grade != 'undefined' ? grade : user.grade %>"
       />
     </div>
     <button type="submit" class="btn btn-primary btn-block">

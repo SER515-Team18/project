@@ -134,8 +134,7 @@ router.post('/updateUser/:id' , (req, res) =>{
 
 //Delete User
 router.post('/deleteUser/:id' , (req, res) =>{
-  //let updates = {};
-  
+
 
   let query = {_id:req.params.id};
 

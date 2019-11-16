@@ -19,6 +19,9 @@ router.get('/adminDashboard', forwardAuthenticated, (req, res) => res.render('ad
 // Search User Page
 router.get('/searchUser', (req, res) => res.render('searchUser'));
 
+// Search User Page to delete
+router.get('/searchUserToDelete', (req, res) => res.render('searchUserToDelete'));
+
 
 // Register
 router.post('/register', (req, res) => {
@@ -129,6 +132,23 @@ router.post('/updateUser/:id' , (req, res) =>{
    });
 });
 
+//Delete User
+router.post('/deleteUser/:id' , (req, res) =>{
+
+
+  let query = {_id:req.params.id};
+
+  User.remove(query, function(err){
+         if(err){
+           console.log(err);
+           return;
+         }
+         else{
+           res.redirect('/users/adminDashboard');
+         }
+  });
+});
+
 //search User
 router.post('/searchUser',(req,res) => {
   const  {email} = req.body;
@@ -142,6 +162,27 @@ router.post('/searchUser',(req,res) => {
       } else {
         errors.push({ msg: 'Email does not exist' });
         res.render('searchUser',{
+          errors
+        })
+          
+    }
+  }
+)});
+
+//search User to delete
+router.post('/searchUserToDelete',(req,res) => {
+  const  {email} = req.body;
+  let errors=[];
+  
+  User.findOne({ email: email }).then(user => {
+    
+      if (user) {
+
+        res.render('deleteUser', {user});
+              
+      } else {
+        errors.push({ msg: 'Email does not exist' });
+        res.render('searchUserToDelete',{
           errors
         })
           

@@ -1,14 +1,13 @@
-<!--<meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' data: fonts.gstatic.com;">-->
 <div class="row mt-5">
     <div class="col-md-6 m-auto">
       <div class="card card-body">
         <h1 class="text-center mb-3">
-          <i class="fas fa-user-plus"></i> Search Information
+          <i class="fas fa-user-plus"></i> Search User to delete
         </h1>
         <% include ./partials/messages %>
-        <form action="/users/searchUser" method="POST">
+        <form action="/users/searchUserToDelete" method="POST">
           <div class="form-group">
-            <label for="name">Search Name to be Updated</label>
+            <label for="name">Enter user email to be deleted</label>
             <input
               type="email"
               id="email"
@@ -22,8 +21,7 @@
             Search
           </button>
         </form>
- 
-        
+       
         
         
       </div>

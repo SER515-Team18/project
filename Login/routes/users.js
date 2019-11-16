@@ -19,6 +19,9 @@ router.get('/adminDashboard', forwardAuthenticated, (req, res) => res.render('ad
 // Search User Page
 router.get('/searchUser', (req, res) => res.render('searchUser'));
 
+// Search User Page to delete
+router.get('/searchUserToDelete', (req, res) => res.render('searchUserToDelete'));
+
 
 // Register
 router.post('/register', (req, res) => {
@@ -136,7 +139,7 @@ router.post('/deleteUser/:id' , (req, res) =>{
 
   let query = {_id:req.params.id};
 
-  User.remove(query, updates, function(err){
+  User.remove(query, function(err){
          if(err){
            console.log(err);
            return;

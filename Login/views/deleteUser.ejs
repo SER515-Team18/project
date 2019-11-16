@@ -3,37 +3,37 @@
 
 <form action="/users/deleteUser/<%= user._id %>" method="POST">
     <div class="form-group">
-      <label for="name">Name</label>
-      <input
+      <label for="name">Name: <%= user.name %></label>
+      <!-- <input
         type="name"
         id="name"
         name="name"
         class="form-control"
         placeholder= <%= user.name %>
         value="<%= typeof name != 'undefined' ? name : user.name %>"
-      />
+      /> -->
     </div>
     <div class="form-group">
-      <label for="email">Email</label>
-      <input
+      <label for="email">Email: <%= user.email %></label>
+      <!-- <input
         type="email"
         id="email"
         name="email"
         class="form-control"
         placeholder=  <%= user.email %>
         value="<%= typeof email != 'undefined' ? email : user.email %>"
-      />
+      /> -->
     </div>
         <div class="form-group">
-      <label for="grade">Grade</label>
-      <input
+      <label for="grade">Grade: <%= user.grade %></label>
+      <!-- <input
         type="grade"
         id="grade"
         name="grade"
         class="form-control"
         placeholder=  <%= user.grade %>
         value="<%= typeof grade != 'undefined' ? grade : user.grade %>"
-      />
+      /> -->
     </div>
     <button type="submit" class="btn btn-primary btn-block">
       Delete

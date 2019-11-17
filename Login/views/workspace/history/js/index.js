@@ -13,10 +13,10 @@ function loadHistory() {
     var resultStr = fetchHistory();
     if (resultStr != undefined)
         $("#widgetActivity").append(resultStr, "<br/>");
-
 }
 function clearHistory() {
     $("#widgetActivity").empty();
+
 }
 
 $(window).on('beforeunload', function () {

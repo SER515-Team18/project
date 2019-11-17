@@ -11,8 +11,6 @@ function loadHistory() {
     var resultStr = fetchHistory();
     if (resultStr != undefined)
         $("#widgetActivity").append(resultStr, "<br/>");
-
-    
 }
 
 $(window).on('beforeunload', function () {

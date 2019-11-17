@@ -1,3 +1,7 @@
+/*
+* author Sai Vinay G 
+* version :1.0
+*/
 function addvalueToWorkSpace(id) {
 	var ele = document.getElementById(id);
 	if (id === "help-new")
@@ -19,7 +23,7 @@ function loadworkspace(ele) {
 function createNewLine() {
 	$("#workspace").append("</br> \n");
 }
-function clearFunction() {
+function clearWorkspace() {
 	$("#workspace").empty();
   }
 var workspaceSection = document.querySelector(".mainSection");

@@ -1,6 +1,8 @@
 <html>
 
 <head></head>
+<link rel="stylesheet" type="text/css" href="main/css/index.css">
+<link rel="stylesheet" href="../lib/css/bootstrap.min.css">
 
 <body>
 
@@ -8,8 +10,6 @@
         <a class="navbar-brand" href="#">
             SER 515 - Team 18
         </a>
-        <p class="navbar-brand">Hi <%= user.name %></p>
-        <a href="/users/logout" class="navbar-brand pull-right">Log Out</a>
     </nav>
     <div class="container-fluid">
         <div class="row" id="workspaceSections">
@@ -28,19 +28,16 @@
                                 draggable="true">
                         </div>
                         <div class="col-1">
-                            <input type="button" id="subtraction" value="-" onclick="addvalueToWorkSpace(this.id)"
-                                draggable="true">
+                            <input type="button" id="addition" value="+" onclick="addvalueToWorkSpace(this.id)"> &nbsp;
                         </div>
                         <div class="col-1">
-                            <input type="button" id="multiplication" value="*" onclick="addvalueToWorkSpace(this.id)"
-                                draggable="true">
+                            <input type="button" id="subtraction" value="-" onclick="addvalueToWorkSpace(this.id)">
                         </div>
                         <div class="col-1">
-                            <input type="button" id="division" value="/" onclick="addvalueToWorkSpace(this.id)"
-                                draggable="true">
+                            <input type="button" id="multiplication" value="*" onclick="addvalueToWorkSpace(this.id)">
                         </div>
                         <div class="col-1">
-                            <input type="button" id="equalto" value="=" onclick="addvalueToWorkSpace(this.id)"> &nbsp;
+                            <input type="button" id="division" value="/" onclick="addvalueToWorkSpace(this.id)"> &nbsp;
                         </div>
                     </div>
                 </div>
@@ -87,9 +84,6 @@
                         <div class="col-1">
                             <input type="button" id="number0" value="0" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
-                        </div>
-                        <div class="col-2">
-                            <input type="button" id="clear" value="clear workspace" onclick="clearFunction(this.id)">
                         </div>
                     </div>
                 </div>
@@ -265,7 +259,7 @@
 
             <div class="col-md-3 mainSection">
                 <div class="row navbar">
-                    <div class="col" id="work">Workspace</div>
+                    <div class="col">Workspace</div>
                 </div>
                 <p align="center" id="workspace"> </p>
             </div>
@@ -286,25 +280,14 @@
     </div>
 </body>
 
-
-<script>
-    var grade = <%- grade %> ;
-
-    switch (grade) {
-        case 1:
-            document.getElementById("grade6").style.display = "none";
-            document.getElementById("grade9").style.display = "none";
-            break;
-        case 6:
-            document.getElementById("grade9").style.display = "none";
-            break;
-        case 9:
-            document.getElementById("grade6").style.display = "none";
-            break;
-        default:
-            break;
-    }
-
-</script>
-
 </html>
+
+<script src="../lib/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="../lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="widgets/js/index.js"></script>
+<script type="text/javascript" src="main/js/index.js"></script>
+<script type="text/javascript" src="result/js/index.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.2/math.min.js"></script>
+<script type="text/javascript" src="history/js/index.js"></script>

@@ -1,5 +1,7 @@
 /*
+
 * author: Archana Madhavan, Sai Vinay G
+
 * version: 1.0
 */
 function fetchHistory() {
@@ -11,6 +13,7 @@ function loadHistory() {
     var resultStr = fetchHistory();
     if (resultStr != undefined)
         $("#widgetActivity").append(resultStr, "<br/>");
+
 }
 function clearHistory() {
     $("#widgetActivity").empty();

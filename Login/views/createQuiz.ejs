@@ -2,37 +2,71 @@
   Version:1.0 -->
 
 <html>
-   <head>
-      <title>Quiz</title>
-   </head>
-   <body>
-      <div>
-         <h1>
-            <center>Create Quiz</center>
+
+<head>
+    <title>Quiz</title>
+</head>
+<script>
+    var index = [];
+    index.push(0);
+    index.push(1);
+
+    function addQuestion() {
+        var id = getID();
+        var div = document.createElement('div');
+        div.setAttribute("id", "addQuestion_" + id);
+        div.innerHTML = '<div><br/></div><textarea placeholder="Enter your question here"></textarea>'+'<div>Answer: <input type="text" name="answer" size="40"><br></div>' + '<div><input type="button" id="addQuestion_' + id + '" onclick="addQuestion()" value="Add Question"/></div>' ;
+        document.getElementById('question1').appendChild(div);
+    }
+
+    function remQuestion(id) {
+        var element = document.getElementById("addQuestion_"+id)
+        element.parentNode.removeChild(element);
+        index[id] = -1;
+    }
+
+    function getID() {
+        var emptyIndex = index.indexOf(-1);
+        if (emptyIndex != -1) {
+            index[emptyIndex] = emptyIndex
+
+            return emptyIndex
+        } else {
+            emptyIndex = index.length
+            index.push(emptyIndex)
+            return emptyIndex
+        }
+    }
+</script>
+
+<body>
+    <div>
+        <h1>
+            <center>Create Homework</center>
          </h1>
-         <br/>
-         <div id="quiz"></div><center>
-         <form action="">
-            Enter Title:
-            <input id="quiz-title" xplaceholder="enter a quiz Title" type="text" value placeholder="Give Title to the quiz"/>
-            
-            <button type="submit"> DONE </button> </br>
+        <br/>
+        <div id="quiz"></div>
+        <center>
+            <form>
+                Enter Title:
+                <input id="quiz-title" xplaceholder="enter a quiz Title" type="text" value placeholder="Give Title to the quiz" />
+                </br>
 
-            Select Type of Quiz:<br>
-            <select name="quizType">
-               <option value="unlimited Time">unlimited Time</option>
-               <option value="limited time">limited time</option>
-               <option value="unlimited attempts">unlimited attempts</option>
-               <option value="limited attempts">limited attempts</option>
-            </select></br><br>
-            <div id="question">
-            <textarea value placeholder="Enter your question here"></textarea></br>
-              Answer: <input type="text" name="answer" size="40"><br>
+                Select targeted grade type for the quiz:
+                <select name="gradeType">
+                    <option value="Grade1">Grade 1</option>
+                    <option value="Grade6">Grade 6</option>
+                </select>
+                </br>
+                <br>
+                <div id="question1">
+                    <textarea value placeholder="Enter your question here"></textarea>
+                    </br>
+                    Answer: <input type="text" name="answer" size="40"><br>
                     <input type="button" id="addQuestion_1" onclick="addQuestion()" value="Add Question" />
+                </div>
+            </form>
+    </div>
+</body>
 
-         </div>
-         </form>
-     </center>
-      </div>
-   </body>
 </html>

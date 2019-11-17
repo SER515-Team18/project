@@ -11,13 +11,13 @@ const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
 
 // Register Page
-router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
+router.get('/register', ensureAuthenticated, (req, res) => res.render('register'));
 
 // Admin Page
-router.get('/adminDashboard', forwardAuthenticated, (req, res) => res.render('adminDashboard'));
+router.get('/adminDashboard', ensureAuthenticated, (req, res) => res.render('adminDashboard'));
 
 // Search User Page
-router.get('/searchUser', (req, res) => res.render('searchUser'));
+router.get('/searchUser', ensureAuthenticated, (req, res) => res.render('searchUser'));
 
 // Search User Page to delete
 router.get('/searchUserToDelete', (req, res) => res.render('searchUserToDelete'));
@@ -96,13 +96,20 @@ router.post('/register', (req, res) => {
 });
 
 // Login
-router.post('/login', (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/users/workspace',
-    failureRedirect: '/users/login',
-    failureFlash: true
-  })(req, res, next);
-});
+router.post('/login', 
+  passport.authenticate('local', { failureRedirect: '/users/login' }),
+  function(req, res) {
+    if (req.user.email == "admin@gmail.com"){
+      res.redirect('/users/adminDashboard');
+    }
+
+    else if (req.user.grade == "teacher"){
+      res.render('teacherdashboard');
+    }
+    else
+    res.redirect('/users/workspace');
+
+  });
   
 // Workspace
 router.get('/workspace', ensureAuthenticated, (req, res) =>

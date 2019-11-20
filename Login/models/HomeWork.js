@@ -1,4 +1,19 @@
+/*
+Author : Narendra , Archana Madhavan
+Version: 1.0
+*/
 const mongoose = require('mongoose');
+
+const questionSchema = new mongoose.Schema({
+  question: {
+    type: String,
+    required: true
+  },
+  answer: {
+    type: String,
+    required: true
+  }
+})
 
 const HomeWorkSchema = new mongoose.Schema({
   title: {
@@ -9,14 +24,8 @@ const HomeWorkSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  question: {
-    type: String,
-    required: true
-  },
-  answer: {
-    type: String,
-    required: true
-  }
+  questions: [questionSchema]
+  
 });
 
 const HomeWork = mongoose.model('HomeWork', HomeWorkSchema);

@@ -1,4 +1,4 @@
-<!-- Author: Lakshmi Kala Pedarla
+<!-- Author: Lakshmi Kala Pedarla, Narendra Mohan
   Version:1.0 -->
 
 <html>
@@ -14,7 +14,7 @@
         <br/>
         <center>
             <% include ./partials/messages %>
-            <form action="/users/createQuiz" method="POST">
+            <form action="/users/createHomeWork" method="POST">
                <div class="form-group">
                   <label for="title">Enter title</label>
                   <input
@@ -55,9 +55,13 @@
                        value="<%= typeof answer != 'undefined' ? answer : '' %>"
                      />
                </div>
-                    <button type="submit"class="btn btn-primary btn-block" value="Add Question">
+                     <button class="btn btn-primary btn-block" name="addQuestion" value="addQuestion">
                         Add Question
-                      </button>
+                     </button>
+                     <button type="submit" class="btn btn-secondary btn-block" name="submit" value="submit">
+                        Submit Homework
+                     </button>
+
             </form>
     </div>
 </body>

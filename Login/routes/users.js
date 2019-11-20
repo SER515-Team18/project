@@ -203,16 +203,27 @@ router.post('/searchUserToDelete',(req,res) => {
   }
 )});
 
+//Add homework
 router.post('/createQuiz',function(req,res) {
-  console.log(req.body);
   const newHomeWork = new HomeWork({
-    title: req.body.homeworkTitle,
+    title: req.body.title,
     grade: req.body.gradeType,
     question: req.body.question,
     answer: req.body.answer
     });
-    console.log(newHomeWork);
-  });
+    
+    newHomeWork
+    .save()
+    .then(homework => {
+      req.flash(
+        'success_msg',
+        'Question added'
+      );
+      res.redirect('/users/createQuiz');
+    })
+    .catch(err => console.log(err));
+});
+
 
 // Logout
 router.get('/logout', (req, res) => {

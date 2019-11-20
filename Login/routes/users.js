@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
-// Load User model
+// Load User & Home work model
 const User = require('../models/User');
+const HomeWork = require('../models/HomeWork');
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
 
@@ -21,6 +22,11 @@ router.get('/searchUser', ensureAuthenticated, (req, res) => res.render('searchU
 
 // Search User Page to delete
 router.get('/searchUserToDelete', (req, res) => res.render('searchUserToDelete'));
+
+//createQuiz Page
+router.get('/createQuiz', (req, res) => res.render('createQuiz'));
+
+
 
 
 // Register
@@ -156,7 +162,7 @@ router.post('/deleteUser/:id' , (req, res) =>{
   });
 });
 
-//search User
+//search User to update
 router.post('/searchUser',(req,res) => {
   const  {email} = req.body;
   let errors=[];
@@ -196,6 +202,17 @@ router.post('/searchUserToDelete',(req,res) => {
     }
   }
 )});
+
+router.post('/createQuiz',function(req,res) {
+  console.log(req.body);
+  const newHomeWork = new HomeWork({
+    title: req.body.homeworkTitle,
+    grade: req.body.gradeType,
+    question: req.body.question,
+    answer: req.body.answer
+    });
+    console.log(newHomeWork);
+  });
 
 // Logout
 router.get('/logout', (req, res) => {

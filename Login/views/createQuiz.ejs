@@ -15,7 +15,7 @@
         var id = getID();
         var div = document.createElement('div');
         div.setAttribute("id", "addQuestion_" + id);
-        div.innerHTML = '<div><br/></div><textarea placeholder="Enter your question here"></textarea>'+'<div>Answer: <input type="text" name="answer" size="40"><br></div>' + '<div><input type="button" id="addQuestion_' + id + '" onclick="addQuestion()" value="Add Question"/>' + '<input type="button" id="remQuestion_' + id + '" onclick="remQuestion('+id+')" value="Remove Question" /></div>';
+        div.innerHTML = '<div><br/></div><input id = "question" placeholder="Enter your question here">'+'<div>Answer: <input id ="answer" type="text" name="answer" size="40"><br></div>' + '<div><input type="button" id="addQuestion_' + id + '" onclick="addQuestion()" value="Add Question"/>' + '<input type="button" id="remQuestion_' + id + '" onclick="remQuestion('+id+')" value="Remove Question" /></div>';
         document.getElementById('question1').appendChild(div);
     }
 
@@ -47,23 +47,23 @@
         <br/>
         <div id="quiz"></div>
         <center>
-            <form>
+            <form action="/users/createQuiz" method="POST">
                 Enter Title:
-                <input id="quiz-title" xplaceholder="enter a quiz Title" type="text" value placeholder="Give Title to the quiz" />
+                <input id="title" type="text" placeholder="Give title to the homework" />
                 </br>
 
                 Select targeted grade type for the quiz:
-                <select name="gradeType">
+                <select name="gradeType" id = "gradeType">
                     <option value="Grade1">Grade 1</option>
                     <option value="Grade6">Grade 6</option>
                 </select>
                 </br>
                 <br>
                 <div id="question1">
-                    <textarea value placeholder="Enter your question here"></textarea>
+                    <input id="question" placeholder="Enter your question here">
                     </br>
-                    Answer: <input type="text" name="answer" size="40"><br>
-                    <input type="button" id="addQuestion_1" onclick="addQuestion()" value="Add Question" />
+                    Answer: <input id = "answer" type="text" name="answer" size="40"><br>
+                    <input type="submit" id="addQuestion_1" onclick="addQuestion()" value="Add Question" />
                 </div>
             </form>
     </div>

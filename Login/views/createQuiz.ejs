@@ -15,11 +15,15 @@
         var id = getID();
         var div = document.createElement('div');
         div.setAttribute("id", "addQuestion_" + id);
-        div.innerHTML = '<div><br/></div><textarea placeholder="Enter your question here"></textarea>'+'<div>Answer: <input type="text" name="answer" size="40"><br></div>' + '<div><input type="button" id="addQuestion_' + id + '" onclick="addQuestion()" value="Add Question"/></div>' ;
+        div.innerHTML = '<div><br/></div><textarea placeholder="Enter your question here"></textarea>'+'<div>Answer: <input type="text" name="answer" size="40"><br></div>' + '<div><input type="button" id="addQuestion_' + id + '" onclick="addQuestion()" value="Add Question"/>' + '<input type="button" id="remQuestion_' + id + '" onclick="remQuestion('+id+')" value="Remove Question" /></div>';
         document.getElementById('question1').appendChild(div);
     }
 
-    
+    function remQuestion(id) {
+        var element = document.getElementById("addQuestion_"+id)
+        element.parentNode.removeChild(element);
+        index[id] = -1;
+    }
 
     function getID() {
         var emptyIndex = index.indexOf(-1);
@@ -60,7 +64,8 @@
                     </br>
                     Answer: <input type="text" name="answer" size="40"><br>
                     <input type="button" id="addQuestion_1" onclick="addQuestion()" value="Add Question" />
-                </div>
+                </div> </br>
+                <input type="submit" value ="Create Quiz"/>
             </form>
     </div>
 </body>

@@ -6,7 +6,7 @@
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#" onclick="w3_open()">☰</a>
         <a class="navbar-brand" href="#"  style="margin: auto; text-align: center; display: block;">
-            SER 515 - Team 18
+            Math Buzz
         </a>
     </nav>
     <!-- Modal -->
@@ -29,10 +29,10 @@
         <div class="row" id="workspaceSections">
            <div class="hamburger" style="display:none" id="mySidebar">
             <button onclick="w3_close()" >Close &times; </button></br>
-            <%= user.name %></br>
+           </br>
             <a href="#" >Homework</a></br>
             <a href="#" >Help</a></br>
-            <a href="#" >Logout</a></br>
+            <a href="/users/logout" >Logout</a></br>
             </div>
             <div class="col-md-3 widgetSection">
                 <div class="row navbar">
@@ -294,7 +294,7 @@
                 </div>
                 <div id="mathResult"></div>
             </div>
-            <div class="col-md-3 historySection">
+            <div class="col-md-1 historySection">
                 <div class="row navbar">
                     <div class="col">History
                         <input type="button" id="clear2" value="Clear" onclick="clearHistory(this.id)">

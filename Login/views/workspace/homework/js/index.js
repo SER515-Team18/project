@@ -1,7 +1,7 @@
-var answers = ["1", "5", "-", "0"];
+var answers = ["1", "5", "-", "0","4"];
 
 $(document).ready(function() {
-  var questions = ["__ + 1 = 2", "5 - __ = 0", "5 __ 4 = 1", "0 + 0 = __"];
+  var questions = ["__ + 1 = 2", "5 - __ = 0", "5 __ 4 = 1", "0 + 0 = __","1 + __ = 5"];
 
   $.each(questions, function(index, row) {
     $("#hwspace").append(

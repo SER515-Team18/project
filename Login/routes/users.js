@@ -24,7 +24,7 @@ router.get('/searchUser', ensureAuthenticated, (req, res) => res.render('searchU
 router.get('/searchUserToDelete', (req, res) => res.render('searchUserToDelete'));
 
 //createQuiz Page
-router.get('/createQuiz', (req, res) => res.render('createQuiz'));
+router.get('/createHomeWork', (req, res) => res.render('createHomeWork'));
 
 
 
@@ -148,7 +148,6 @@ router.post('/updateUser/:id' , (req, res) =>{
 //Delete User
 router.post('/deleteUser/:id' , (req, res) =>{
 
-
   let query = {_id:req.params.id};
 
   User.remove(query, function(err){
@@ -164,7 +163,7 @@ router.post('/deleteUser/:id' , (req, res) =>{
 
 //search User to update
 router.post('/searchUser',(req,res) => {
-  const  {email} = req.body;
+  const {email} = req.body;
   let errors=[];
   
   User.findOne({ email: email }).then(user => {
@@ -203,28 +202,72 @@ router.post('/searchUserToDelete',(req,res) => {
   }
 )});
 
-//Add homework
-router.post('/createQuiz',function(req,res) {
-  const newHomeWork = new HomeWork({
-    title: req.body.title,
-    grade: req.body.gradeType,
-    question: req.body.question,
-    answer: req.body.answer
+//Add new homework or add questions to a homework.
+router.post('/createHomeWork', (req,res) => {
+  if(req.body.addQuestion){
+    HomeWork.findOne({ title: req.body.title }).then(homework => {
+      if (homework) {
+        const questions = {question: req.body.question, answer: req.body.answer}
+        HomeWork.updateOne(
+          { title: req.body.title }, 
+          { $push: { questions: questions } },
+          function (error) {
+            if (error) {
+              console.log(err);
+              res.redirect('/users/createHomeWork');
+            } else {
+              req.flash(
+                'success_msg',
+                'Question added'
+              );
+              res.redirect('/users/createHomeWork');
+            }
+          }
+        );  
+      }
+      else{
+        req.flash(
+          'error_msg',
+          'Homework does not exist!'
+        );
+        res.redirect('/users/createHomeWork');
+      }
     });
-    
-    newHomeWork
-    .save()
-    .then(homework => {
-      req.flash(
-        'success_msg',
-        'Question added'
-      );
-      res.redirect('/users/createQuiz');
+  } else if(req.body.submit){
+    HomeWork.findOne({title: req.body.title}).then(homework =>{
+      if(homework){
+        req.flash(
+          'error_msg',
+          'Home work already exists!'
+        );
+        res.redirect('/users/createHomeWork');
+      }
+      else{
+        const newHomeWork = new HomeWork({
+          title: req.body.title,
+          grade: req.body.gradeType,
+          questions:[{
+            question : req.body.question,
+            answer: req.body.answer
+            }]
+          });
+          newHomeWork
+          .save()
+          .then(homework => {
+            req.flash(
+              'success_msg',
+              'Homework added'
+            );
+            res.redirect('/users/createHomeWork');
+          })
+          .catch(err => console.log(err));
+      }
     })
-    .catch(err => console.log(err));
-});
+  }
+}); 
 
 
+  
 // Logout
 router.get('/logout', (req, res) => {
   req.logout();

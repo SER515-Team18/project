@@ -5,13 +5,21 @@
 <body>
 
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="#" onclick="w3_open()">☰</a>
+        <a class="navbar-brand" href="#"  style="margin: auto; text-align: center; display: block;">
             SER 515 - Team 18
         </a>
+        
     </nav>
     <div class="container-fluid">
         <div class="row" id="workspaceSections">
-
+           <div class="hamburger" style="display:none" id="mySidebar">
+            <button onclick="w3_close()" >Close &times; </button></br>
+            <%= user.name %></br>
+            <a href="#" >Homework</a></br>
+            <a href="#" >Help</a></br>
+            <a href="#" >Logout</a></br>
+            </div>
             <div class="col-md-3 widgetSection">
                 <div class="row navbar">
                     <div class="col">Widgets</div>
@@ -299,7 +307,6 @@
         default:
             break;
     }
-
 </script>
 
 </html>

@@ -16,6 +16,8 @@ router.get('/register', ensureAuthenticated, (req, res) => res.render('register'
 
 // Admin Page
 router.get('/adminDashboard', ensureAuthenticated, (req, res) => res.render('adminDashboard'));
+router.get('/homework', ensureAuthenticated, (req, res) => res.render('homework'));
+
 
 // Search User Page
 router.get('/searchUser', ensureAuthenticated, (req, res) => res.render('searchUser'));

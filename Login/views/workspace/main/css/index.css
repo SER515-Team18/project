@@ -3,13 +3,15 @@
     height: 100vh;
 }
 
-div#workspaceSections {
+div#workspaceSections,div#hwSections {
     height: 100%;
 }
 
 .mainSection,
 .resultSection,
-.widgetSection {
+.widgetSection,
+.hwSection,
+.pointsSection {
     border-right: 1px #ced4da solid;
 
 }
@@ -17,3 +19,4 @@ div#workspaceSections {
 .col-1 input {
     width: 25px;
 }
+

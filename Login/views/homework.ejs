@@ -8,13 +8,12 @@
         <a class="navbar-brand" href="#">
             SER 515 - Team 18
         </a>
-        <p class="navbar-brand">Hi <%= user.name %></p>
         <a href="/users/logout" class="navbar-brand pull-right">Log Out</a>
     </nav>
     <div class="container-fluid">
-        <div class="row" id="workspaceSections">
+        <div class="row" id="hwSections">
 
-            <div class="col-md-3 widgetSection">
+            <div class="col-md-4 widgetSection">
                 <div class="row navbar">
                     <div class="col">Widgets</div>
                 </div>
@@ -24,23 +23,23 @@
                     <div class="row">
 
                         <div class="col-1">
-                            <input type="button" id="addition" value="+" onclick="addvalueToWorkSpace(this.id)"
+                            <input type="button" id="hwaddition" value="+"  
                                 draggable="true">
                         </div>
                         <div class="col-1">
-                            <input type="button" id="subtraction" value="-" onclick="addvalueToWorkSpace(this.id)"
+                            <input type="button" id="hwhwsubtraction" value="-"  
                                 draggable="true">
                         </div>
                         <div class="col-1">
-                            <input type="button" id="multiplication" value="*" onclick="addvalueToWorkSpace(this.id)"
+                            <input type="button" id="hwmultiplication" value="*"  
                                 draggable="true">
                         </div>
                         <div class="col-1">
-                            <input type="button" id="division" value="/" onclick="addvalueToWorkSpace(this.id)"
+                            <input type="button" id="hwdivision" value="/"  
                                 draggable="true">
                         </div>
                         <div class="col-1">
-                            <input type="button" id="equalto" value="=" onclick="addvalueToWorkSpace(this.id)"> &nbsp;
+                            <input type="button" id="hwequalto" value="="  > &nbsp;
                         </div>
                     </div>
                 </div>
@@ -49,79 +48,83 @@
                     <p>Numbers</p>
                     <div class="row">
                         <div class="col-1">
-                            <input type="button" id="number1" value="1" onclick="addvalueToWorkSpace(this.id)"
+                            <input type="button" id="hwnumber1" value="1"  
                                 draggable="true">
                         </div>
                         <div class="col-1">
-                            <input type="button" id="number2" value="2" onclick="addvalueToWorkSpace(this.id)"
+                            <input type="button" id="hwnumber2" value="2"  
                                 draggable="true">
                         </div>
                         <div class="col-1">
-                            <input type="button" id="number3" value="3" onclick="addvalueToWorkSpace(this.id)"
+                            <input type="button" id="hwnumber3" value="3"  
                                 draggable="true">
                         </div>
                         <div class="col-1">
-                            <input type="button" id="number4" value="4" onclick="addvalueToWorkSpace(this.id)"
+                            <input type="button" id="hwnumber4" value="4"  
                                 draggable="true">
                         </div>
                         <div class="col-1">
-                            <input type="button" id="number5" value="5" onclick="addvalueToWorkSpace(this.id)"
+                            <input type="button" id="hwnumber5" value="5"  
                                 draggable="true">
                         </div>
                         <div class="col-1">
-                            <input type="button" id="number6" value="6" onclick="addvalueToWorkSpace(this.id)"
+                            <input type="button" id="hwnumber6" value="6"  
                                 draggable="true">
                         </div>
                         <div class="col-1">
-                            <input type="button" id="number7" value="7" onclick="addvalueToWorkSpace(this.id)"
+                            <input type="button" id="hwnumber7" value="7"  
                                 draggable="true">
                         </div>
                         <div class="col-1">
-                            <input type="button" id="number8" value="8" onclick="addvalueToWorkSpace(this.id)"
+                            <input type="button" id="hwnumber8" value="8"  
                                 draggable="true">
                         </div>
                         <div class="col-1">
-                            <input type="button" id="number9" value="9" onclick="addvalueToWorkSpace(this.id)"
+                            <input type="button" id="hwnumber9" value="9"  
                                 draggable="true">
                         </div>
                         <div class="col-1">
-                            <input type="button" id="number0" value="0" onclick="addvalueToWorkSpace(this.id)"
+                            <input type="button" id="hwnumber0" value="0"  
                                 draggable="true">
                         </div>
                     </div>
                 </div>
                 <br>
-                <div id="grade6">
+                <div id="grade6" style="display: none;">
                     <p>Paranthesis</p>
                     <div class="row">
 
                         <div class="col-1">
-                            <input type="button" id="left_Paranthesis" value="(" onclick="addvalueToWorkSpace(this.id)"
+                            <input type="button" id="hwleft_Paranthesis" value="("  
                                 draggable="true">
                         </div>
                         <div class="col-1">
-                            <input type="button" id="right_paranthesis" value=")" onclick="addvalueToWorkSpace(this.id)"
+                            <input type="button" id="hwright_paranthesis" value=")"  
                                 draggable="true">
                         </div>
                     </div>
                 </div>
                 <br>
-                
 
-            <div class="col-md-3 mainSection">
+
+            </div>
+
+            <div class="col-md-6 hwSection">
                 <div class="row navbar">
                     <div class="col" align="center">Homework</div>
                 </div>
-                <p align="center" id="workspace"> </p>
+                <p align="center" id="hwspace"> </p>
             </div>
-            <div class="col-md-3 resultSection">
+            <div class="col-md-2 pointsSection">
                 <div class="row navbar">
-                    <div class="col">Result</div>
+                    <div class="col">Score</div>
                 </div>
-                <div id="mathResult"></div>
+                <div id="finalMarks">
+                    <h4> <i id='score'>0</i>/5 </h4>
+
+                </div>
             </div>
         </div>
-    </div>
 </body>
 
 </html>

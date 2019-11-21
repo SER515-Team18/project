@@ -1,0 +1,22 @@
+.container-fluid {
+    margin: 0 !important;
+    height: 100vh;
+}
+
+div#workspaceSections,div#hwSections {
+    height: 100%;
+}
+
+.mainSection,
+.resultSection,
+.widgetSection,
+.hwSection,
+.pointsSection {
+    border-right: 1px #ced4da solid;
+
+}
+
+.col-1 input {
+    width: 25px;
+}
+

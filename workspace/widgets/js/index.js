@@ -19,7 +19,9 @@ function loadworkspace(ele) {
 function createNewLine() {
 	$("#workspace").append("</br> \n");
 }
-
+function clearFunction() {
+	$("#workspace").empty();
+  }
 var workspaceSection = document.querySelector(".mainSection");
 var widgets = document.querySelectorAll('[draggable="true"]');
 

@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const passport = require('passport');
 const session = require('express-session');
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -38,6 +39,10 @@ app.use(
     saveUninitialized: true
   })
 );
+
+//bodyParser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 // Connect flash
 app.use(flash());

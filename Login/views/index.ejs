@@ -3,14 +3,28 @@
 <head></head>
 
 <body>
-
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#" onclick="w3_open()">☰</a>
         <a class="navbar-brand" href="#"  style="margin: auto; text-align: center; display: block;">
             SER 515 - Team 18
         </a>
-        
     </nav>
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="hwModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Your Homeworks</h5>
+            </div>
+            <div class="modal-body">
+              <a href="/users/homework">Homework 1</a>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="container-fluid">
         <div class="row" id="workspaceSections">
            <div class="hamburger" style="display:none" id="mySidebar">
@@ -37,20 +51,20 @@
                             <input type="button" id="subtraction" value="-" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-1 ex_grade1">
                             <input type="button" id="multiplication" value="*" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-1 ex_grade1">
                             <input type="button" id="division" value="/" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-1 ex_grade1">
                             <input type="button" id="equalto" value="=" onclick="addvalueToWorkSpace(this.id)"> &nbsp;
                         </div>
                     </div>
                 </div>
-
+                <br>
                 <div id=Numbers>
                     <p>Numbers</p>
                     <div class="row">
@@ -268,7 +282,9 @@
 
             <div class="col-md-3 mainSection">
                 <div class="row navbar">
-                    <div class="col">Workspace</div>
+                    <div class="col" id="work" align="center">Workspace
+                            <input type="button" id="clear1" value="Clear" onclick="clearWorkspace(this.id)">
+                    </div>
                 </div>
                 <p align="center" id="workspace"> </p>
             </div>
@@ -280,7 +296,9 @@
             </div>
             <div class="col-md-3 historySection">
                 <div class="row navbar">
-                    <div class="col">History</div>
+                    <div class="col">History
+                        <input type="button" id="clear2" value="Clear" onclick="clearHistory(this.id)">
+                    </div>
                 </div>
                 <div id="widgetActivity"></div>
 
@@ -297,6 +315,10 @@
         case 1:
             document.getElementById("grade6").style.display = "none";
             document.getElementById("grade9").style.display = "none";
+            var element = document.getElementsByClassName("ex_grade1");
+            for (let index = 0; index < element.length; index++) {
+                element[index].style.display = "none";
+            }
             break;
         case 6:
             document.getElementById("grade9").style.display = "none";

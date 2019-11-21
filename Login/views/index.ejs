@@ -4,15 +4,10 @@
 
 <body>
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="#" onclick="w3_open()">☰</a>
+        <a class="navbar-brand" href="#"  style="margin: auto; text-align: center; display: block;">
             SER 515 - Team 18
         </a>
-        <p class="navbar-brand">Hi <%= user.name %></p>
-        <a href="/users/logout" class="navbar-brand pull-right">Log Out</a>
-        <button type="button" id="sidebarCollapse" data-toggle="modal" data-target="#exampleModal" class="btn btn-info">
-            <i class="fas fa-align-left"></i>
-            <span>Homeworks</span>
-        </button>
     </nav>
     <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="hwModalLabel" aria-hidden="true">
@@ -32,7 +27,13 @@
       </div>
     <div class="container-fluid">
         <div class="row" id="workspaceSections">
-
+           <div class="hamburger" style="display:none" id="mySidebar">
+            <button onclick="w3_close()" >Close &times; </button></br>
+            <%= user.name %></br>
+            <a href="#" >Homework</a></br>
+            <a href="#" >Help</a></br>
+            <a href="#" >Logout</a></br>
+            </div>
             <div class="col-md-3 widgetSection">
                 <div class="row navbar">
                     <div class="col">Widgets</div>
@@ -328,7 +329,14 @@
         default:
             break;
     }
-
 </script>
+<script type="text/javascript">
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+    }
 
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+    }
+</script>
 </html>

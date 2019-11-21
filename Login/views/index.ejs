@@ -50,20 +50,20 @@
                             <input type="button" id="subtraction" value="-" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-1 ex_grade1">
                             <input type="button" id="multiplication" value="*" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-1 ex_grade1">
                             <input type="button" id="division" value="/" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-1 ex_grade1">
                             <input type="button" id="equalto" value="=" onclick="addvalueToWorkSpace(this.id)"> &nbsp;
                         </div>
                     </div>
                 </div>
-
+                <br>
                 <div id=Numbers>
                     <p>Numbers</p>
                     <div class="row">
@@ -314,6 +314,10 @@
         case 1:
             document.getElementById("grade6").style.display = "none";
             document.getElementById("grade9").style.display = "none";
+            var element = document.getElementsByClassName("ex_grade1");
+            for (let index = 0; index < element.length; index++) {
+                element[index].style.display = "none";
+            }
             break;
         case 6:
             document.getElementById("grade9").style.display = "none";

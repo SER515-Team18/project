@@ -3,14 +3,33 @@
 <head></head>
 
 <body>
-
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
             SER 515 - Team 18
         </a>
         <p class="navbar-brand">Hi <%= user.name %></p>
         <a href="/users/logout" class="navbar-brand pull-right">Log Out</a>
+        <button type="button" id="sidebarCollapse" data-toggle="modal" data-target="#exampleModal" class="btn btn-info">
+            <i class="fas fa-align-left"></i>
+            <span>Homeworks</span>
+        </button>
     </nav>
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="hwModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Your Homeworks</h5>
+            </div>
+            <div class="modal-body">
+              <a href="/users/homework">Homework 1</a>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="container-fluid">
         <div class="row" id="workspaceSections">
 

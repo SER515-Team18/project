@@ -4,7 +4,9 @@
 
 <body>
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#" onclick="w3_open()">☰</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mySidebar" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
         <a class="navbar-brand" href="#"  style="margin: auto; text-align: center; display: block;">
             Math Buzz
         </a>
@@ -27,12 +29,15 @@
       </div>
     <div class="container-fluid">
         <div class="row" id="workspaceSections">
-           <div class="hamburger" style="display:none" id="mySidebar">
-            <button onclick="w3_close()" >Close &times; </button></br>
-            <%= user.name %></br>
-            <a href="/users/homework" >Homework</a></br>
-            <a href="#" >Help</a></br>
-            <a href="/users/logout" >Logout</a></br>
+           <div class="collapse"  id="mySidebar">
+                <div class = "bg-dark p-4">
+                    <ul class="list-unstyled components">
+                        <li><h5 class="text-white h4"><%= user.name %></h5></li>
+                        <li><h7 class="text-white h7"><a href="/users/homework" >Homework</a></h7></li> 
+                        <li><h7 class="text-white h7"><a href="#">Help</a></h7></li>
+                        <li><h7 class="text-white h7"><a href="/users/logout">Logout</a></h7></li>
+                    </ul>
+                </div>  
             </div>
             <div class="col-md-3 widgetSection">
                 <div class="row navbar">
@@ -328,15 +333,6 @@
             break;
         default:
             break;
-    }
-</script>
-<script type="text/javascript">
-    function w3_open() {
-      document.getElementById("mySidebar").style.display = "block";
-    }
-
-    function w3_close() {
-      document.getElementById("mySidebar").style.display = "none";
     }
 </script>
 </html>

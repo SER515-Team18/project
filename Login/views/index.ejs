@@ -4,7 +4,10 @@
 
 <body>
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#mySidebar" data-toggle="collapse" role="button" aria-expanded="false">☰</a>
+        <!-- <a class="navbar-brand" href="#mySidebar" data-toggle="collapse" role="button" aria-expanded="false">☰</a> -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mySidebar" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
         <a class="navbar-brand" href="#"  style="margin: auto; text-align: center; display: block;">
             Math Buzz
         </a>
@@ -28,14 +31,16 @@
     <div class="container-fluid">
         <div class="row" id="workspaceSections">
 
-           <div class="hamburger" style="display:outside" id="mySidebar">
+           <div class="collapse"  id="mySidebar">
             <!--<button onclick="w3_close()" >Close &times; </button></br>-->
-            <ul class="list-unstyled components">
-            <li><label><%= user.name %></label></li>
-            <li><a href="/users/homework" >Homework</a></li> 
-            <li><a href="#" >Help</a></li>
-            <li><a href="/users/logout" >Logout</a></li>
-            </ul>
+                <div class = "bg-dark p-4">
+                    <ul class="list-unstyled components">
+                        <li><h5 class="text-white h4"><%= user.name %></h5></li>
+                        <li><h7 class="text-white h7"><a href="/users/homework" >Homework</a></h7></li> 
+                        <li><h7 class="text-white h7"><a href="#">Help</a></h7></li>
+                        <li><h7 class="text-white h7"><a href="/users/logout">Logout</a></h7></li>
+                        </ul>
+                </div>  
             </div>
             <div class="col-md-3 widgetSection">
                 <div class="row navbar">

@@ -1,0 +1,34 @@
+<!-- 
+    Author : Narendra Mohan Murali Mohan
+    Version : 1.0
+ -->
+<html>
+    <head> Student List </head>
+
+    <body>
+        <table>
+            <tr><th>Names</th></tr>
+            <th>Grade1</th>
+                <% Students.forEach(function(student) { %>
+                    <% if(student.grade == "1") { %>
+                        <tr><td><%= student.name %></td></tr>
+                  <%  } %>
+                <% }); %>
+                <th>Grade6</th>
+                <% Students.forEach(function(student) { %>
+                    <% if(student.grade == "6") { %>
+                        <tr><td><%= student.name %></td></tr>
+                  <%  } %>
+                <% }); %>
+                <th>Grade9</th>
+                <% Students.forEach(function(student) { %>
+                    <% if(student.grade == "9") { %>
+                        <tr><td><%= student.name %></td></tr>
+                  <%  } %>
+                <% }); %>
+        </table>                    
+    </body>
+</html>
+
+
+

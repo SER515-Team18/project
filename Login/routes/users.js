@@ -1,3 +1,7 @@
+/*
+*Author: Narendra, Archana
+* Version: 1.1
+*/
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
@@ -41,10 +45,6 @@ router.post('/register', (req, res) => {
     errors.push({ msg: 'Please enter all fields' });
   }
   
-  if (grade != '1' && grade != '6' && grade != '9'){
-		errors.push({msg: 'Please enter a valid grade'});
-  }
-
   if (password != password2) {
     errors.push({ msg: 'Passwords do not match' });
   }

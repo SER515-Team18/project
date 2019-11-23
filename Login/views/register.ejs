@@ -28,17 +28,17 @@
             value="<%= typeof email != 'undefined' ? email : '' %>"
           />
         </div>
-		    <div class="form-group">
-          <label for="grade">Grade</label>
-          <input
-            type="grade"
-            id="grade"
-            name="grade"
-            class="form-control"
-            placeholder="Enter Grade"
-            value="<%= typeof grade != 'undefined' ? grade : '' %>"
-          />
-        </div>
+		    
+        <div class="form-group">
+          <label for="grade">Select Role</label>
+          <select type="grade" name="grade" id ="grade">
+             <option value="Grade1">Grade 1 Student</option>
+             <option value="Grade6">Grade 6 Student</option>
+             <option value="Grade9">Grade 9 Student</option>
+             <option value="teacher">Teacher</option>
+          </select>
+       </div>  
+
         <div class="form-group">
           <label for="password">Password</label>
           <input

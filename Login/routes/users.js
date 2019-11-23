@@ -27,13 +27,13 @@ router.get('/homework', ensureAuthenticated, (req, res) => res.render('homework'
 router.get('/searchUser', ensureAuthenticated, (req, res) => res.render('searchUser'));
 
 // Search User Page to delete
-router.get('/searchUserToDelete', (req, res) => res.render('searchUserToDelete'));
+router.get('/searchUserToDelete', ensureAuthenticated, (req, res) => res.render('searchUserToDelete'));
 
-//createQuiz Page
-router.get('/createHomeWork', (req, res) => res.render('createHomeWork'));
+//createHomeWork Page
+router.get('/createHomeWork', ensureAuthenticated, (req, res) => res.render('createHomeWork'));
 
 //teacherdashboard Page
-router.get('/teacherdashboard', (req, res) => res.render('teacherdashboard'));
+router.get('/teacherdashboard', ensureAuthenticated, (req, res) => res.render('teacherdashboard'));
 
 
 // Register
@@ -113,7 +113,7 @@ router.post('/login',
     }
 
     else if (req.user.grade == "teacher"){
-      res.render('teacherdashboard');
+      res.redirect('/users/teacherdashboard');
     }
     else
     res.redirect('/users/workspace');
@@ -269,7 +269,16 @@ router.post('/createHomeWork', (req,res) => {
   }
 }); 
 
-
+//list of students
+router.get('/listStudents', ensureAuthenticated, (req,res) =>{
+  User.find({}).exec(function(err,users){
+    if(err){
+      Console.log(err);
+    }
+    res.render('viewStudents', {"Students": users});
+  });
+  
+});
   
 // Logout
 router.get('/logout', (req, res) => {

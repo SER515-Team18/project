@@ -32,7 +32,8 @@ router.get('/searchUserToDelete', (req, res) => res.render('searchUserToDelete')
 //createQuiz Page
 router.get('/createHomeWork', (req, res) => res.render('createHomeWork'));
 
-
+//teacherdashboard Page
+router.get('/teacherdashboard', (req, res) => res.render('teacherdashboard'));
 
 
 // Register

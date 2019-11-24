@@ -1,17 +1,24 @@
-<div class="row mt-5">
-  <div class="col-md-6 m-auto">
-    <div class="card card-body">
+<div class="sidenav">
+  <div class="login-main-text">
+     <h2>Welcome to Mathbuzz</h2>
+     <p>Please log in to continue</p>
+  </div>
+</div>
+<div class="main">
+  <div class="col-md-6 col-sm-12">
+
+    <div class=" loginCard">
         <% include ./partials/messages %>
-      <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>  Login</h1>
-      <form action="/users/login" method="POST">
+      <form class="form-signin" action="/users/login" method="POST">
         <div class="form-group">
-          <label for="email">Email</label>
+          <label for="email">Email Address</label>
           <input
             type="email"
             id="email"
             name="email"
             class="form-control"
-            placeholder="Enter Email"
+            placeholder="Enter your email address"
+            autofocus
           />
         </div>
         <div class="form-group">
@@ -21,10 +28,10 @@
             id="password"
             name="password"
             class="form-control"
-            placeholder="Enter Password"
+            placeholder="Enter your Password"
           />
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Login</button>
+        <button type="submit" class="btn btn-dark btn-block  ">Login</button>
       </form>
     </div>
   </div>

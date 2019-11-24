@@ -1,23 +1,37 @@
-<!DOCTYPE html>
 <meta name="author" content="Lakshmi Kala Pedarla">
 <meta name="author" content="Archana Madhavan">
-<html>
-    <head></head>
-    <body>
-            <nav class="navbar navbar-dark bg-dark">
-                    
-                        <a class="navbar-brand" href="#">
-                                ADMIN DASHBOARD
-                        </a>
-                    
-                        <a href="/users/logout" class="navbar-brand pull-right">Log Out</a>
+
+        <nav class="navbar navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mySidebar" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                <a class="navbar-brand" href="#"  style="display: block;">
+                    MathBuzz
+                </a>
             </nav>
-        <center>
-            
-            <a href="/users/register" style="font-size : 20px">Add User</a>
-            <a value="Update User" href="/users/searchUser" style="font-size : 20px">Update User</a>
-            <a value="Delete User" href="/users/searchUserToDelete" style="font-size : 20px">Delete User</a>
-          
-        </center>
-    </body>
-</html>
+            <div class="container-fluid">
+                    <div class="row" >
+              
+            <div class="collapse"  id="mySidebar" style="min-height: -webkit-fill-available;">
+                    <div class = "bg-dark p-4">
+                        <ul class="list-unstyled components ">
+                            <li><h5 class="text-white h6">Hi, Admin</h5></li><br>
+                            <li><p class="text-white h7"><a href="/users/logout">Logout</a></p></li>
+                        </ul>
+                    </div>  
+                </div>
+
+                        <ul class="list-group col" style="margin-left:2%;margin-top:1%;">
+                            <li class="list-group-item">
+                                <a href="/users/register" style="font-size : 15px;color:#343a40">Add User</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a value="Update User" href="/users/searchUser" style="font-size : 15px;color:#343a40">Update User</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a value="Delete User" href="/users/searchUserToDelete" style="font-size : 15px;color:#343a40">Delete User</a>
+                            </li>
+                        </ul>
+                </div>
+                </div>
+    

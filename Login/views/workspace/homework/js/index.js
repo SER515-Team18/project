@@ -32,7 +32,6 @@ function checkHW() {
       count++;
     } else if (aid != undefined) {
       $(this).css("color", "red");
-      count--;
     }
   });
 
@@ -51,6 +50,8 @@ function loadhwspace(ele, id) {
   button.appendChild(node);
   button.setAttribute("id", ele.value);
   button.setAttribute("ondblclick", "remove_operator(this.id)");
+  button.setAttribute("class","btn  btn-outline-secondary");
+
   var work = document.getElementById("a" + id);
   console.log("a" + id, work);
   work.innerHTML = "";

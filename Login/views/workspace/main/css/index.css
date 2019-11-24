@@ -8,7 +8,7 @@ hr{
 }
 .container-fluid {
   margin: 0 !important;
-  height: 100vh;
+  height: 90vh;
 }
 
 .btn-group-xs > .btn, .btn-xs {
@@ -35,6 +35,9 @@ div#hwSections {
   color: #252422;
   margin: 10px 10px 0 5px;
   z-index: 1;
+  max-height:100%;
+  overflow-y:auto;
+  overflow-x: hidden;
 }
 .historySection {
   margin-right: 10px !important;
@@ -86,3 +89,31 @@ div#hwSections {
     margin-left: -12px;
 }
 
+.navbar-toggler, .navbar-toggler:focus{
+    border: 0 !important;
+    outline: none;
+}
+
+#mySidebar div{
+    height: 100%;
+}
+
+.collapsing {
+    transition: none;
+}
+
+#mySidebar a{
+    color:   #F1EAE0;
+}
+
+#mySidebar a:hover{
+    color: rgba(244, 243, 239, 0.8);
+}
+
+.wk-btn{
+    margin: 0 2px 2px 2px;
+}
+
+#profile-tab.nav-link a, #profile-tab.nav-link a:active{
+    color: black !important;
+}

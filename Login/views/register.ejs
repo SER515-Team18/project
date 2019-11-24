@@ -1,9 +1,9 @@
 <div class="row mt-5">
   <div class="col-md-6 m-auto">
     <div class="card card-body">
-      <h1 class="text-center mb-3">
+      <h3 class="text-center mb-3">
         <i class="fas fa-user-plus"></i> Register
-      </h1>
+      </h3>
       <% include ./partials/messages %>
       <form action="/users/register" method="POST">
         <div class="form-group">
@@ -34,7 +34,6 @@
           <select type="grade" name="grade" id ="grade">
              <option value="Grade1">Grade 1 Student</option>
              <option value="Grade6">Grade 6 Student</option>
-             <option value="Grade9">Grade 9 Student</option>
              <option value="teacher">Teacher</option>
           </select>
        </div>  
@@ -46,7 +45,7 @@
             id="password"
             name="password"
             class="form-control"
-            placeholder="Create Password"
+            placeholder="Enter Password"
             value="<%= typeof password != 'undefined' ? password : '' %>"
           />
         </div>
@@ -61,11 +60,11 @@
             value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
           />
         </div>
-        <button type="submit" class="btn btn-primary btn-block">
-          Register
+        <button type="submit" class="btn btn-secondary btn-block">
+          Submit
         </button>
       </form>
-      <p class="lead mt-4">Have An Account? <a href="/users/login">Login</a></p>
+      <p class="lead mt-4" style="display: none;">Have An Account? <a href="/users/login">Login</a></p>
     </div>
   </div>
 </div>

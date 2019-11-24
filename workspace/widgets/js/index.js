@@ -13,6 +13,7 @@ function loadworkspace(ele) {
 	button.setAttribute("id", ele.value);
 	button.setAttribute("ondblclick", "remove_operator(this.id)");
 	var work = document.getElementById("workspace");
+	button.setAttribute("class","btn  btn-outline-secondary");
 	work.appendChild(button);
 }
 

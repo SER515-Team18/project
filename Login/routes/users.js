@@ -33,7 +33,19 @@ router.get('/searchUserToDelete', ensureAuthenticated, (req, res) => res.render(
 router.get('/createHomeWork', ensureAuthenticated, (req, res) => res.render('createHomeWork'));
 
 //teacherdashboard Page
-router.get('/teacherdashboard', ensureAuthenticated, (req, res) => res.render('teacherdashboard'));
+router.get('/teacherdashboard', ensureAuthenticated, (req, res) => res.render('teacherdashboard',{
+  user: req.user,
+}));
+
+//teacher view homeworks Page
+router.get('/teacherviewhomeworks', ensureAuthenticated, (req, res) => res.render('teacherViewHomeworks',{
+  user: req.user,
+}));
+
+//teacher Display Homework Page
+router.get('/teacherdisplayhomework', ensureAuthenticated, (req, res) => res.render('teacherDisplayHomework',{
+  user: req.user,
+}));
 
 
 // Register
@@ -208,7 +220,7 @@ router.post('/searchUserToDelete',(req,res) => {
 //Add new homework or add questions to a homework.
 router.post('/createHomeWork', (req,res) => {
   if(req.body.addQuestion){
-    HomeWork.findOne({ title: req.body.title }).then(homework => {
+    HomeWork.findOne({ title: req.body.title, grade: req.body.gradeType }).then(homework => {
       if (homework) {
         const questions = {question: req.body.question, answer: req.body.answer}
         HomeWork.updateOne(
@@ -237,7 +249,7 @@ router.post('/createHomeWork', (req,res) => {
       }
     });
   } else if(req.body.submit){
-    HomeWork.findOne({title: req.body.title}).then(homework =>{
+    HomeWork.findOne({title: req.body.title, grade: req.body.gradeType}).then(homework =>{
       if(homework){
         req.flash(
           'error_msg',
@@ -261,7 +273,7 @@ router.post('/createHomeWork', (req,res) => {
               'success_msg',
               'Homework added'
             );
-            res.redirect('/users/createHomeWork');
+            res.redirect('/users/teacherdashboard');
           })
           .catch(err => console.log(err));
       }
@@ -279,7 +291,17 @@ router.get('/listStudents', ensureAuthenticated, (req,res) =>{
   });
   
 });
-  
+
+//teacher view homeworks
+router.get('/teacherViewHomeWorks', ensureAuthenticated, (req,res) => {
+    HomeWork.find({}).exec(function(err,homeworks){
+        if(err){
+          console.log(err);
+        }
+        res.render('teacherViewHomeworks', {"Homework": homeworks});
+    });
+});
+
 // Logout
 router.get('/logout', (req, res) => {
   req.logout();

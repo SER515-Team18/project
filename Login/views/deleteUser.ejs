@@ -1,5 +1,11 @@
-
-<p>Delete User</p>
+<!-- Author: Archana Madhavan, Narendra Mohan
+  Version:1.0 -->
+  <nav class="navbar navbar-dark bg-dark">
+    <h2 class="text-white h2">Delete User</h2>
+    <a class="navbar-brand" href="/users/adminDashboard"  style=" text-align: center; display: block;">
+    Go to Dashboard
+    </a>
+</nav>
 <% include ./partials/messages %>
 
 <form action="/users/deleteUser/<%= user._id %>" method="POST">

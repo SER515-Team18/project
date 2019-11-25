@@ -1,7 +1,13 @@
+<!-- Author: Archana Madhavan, Narendra Mohan
+  Version:1.0 -->
+  <nav class="navbar navbar-dark bg-dark">
+    <h2 class="text-white h2">Update User</h2>
+    <a class="navbar-brand" href="/users/adminDashboard"  style=" text-align: center; display: block;">
+    Go to Dashboard
+    </a>
+</nav>
 <div style="padding: 10%;">
-<p>Update user</p>
 <% include ./partials/messages %>
-
 <form action="/users/updateUser/<%= user._id %>" method="POST">
     <div class="form-group">
       <label for="name">Name</label>

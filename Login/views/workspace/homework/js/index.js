@@ -1,13 +1,10 @@
-var answers = ["1", "5", "-", "0", "4"];
-
+var answers = [];
+var questions = [];
 $(document).ready(function() {
-  var questions = [
-    "__ + 1 = 2",
-    "5 - __ = 0",
-    "5 __ 4 = 1",
-    "0 + 0 = __",
-    "1 + __ = 5"
-  ];
+  $("#HWQuestions li").each(function() {
+    if ($(this).attr("id") == "HWQ") questions.push($(this).text());
+    else if ($(this).attr("id") == "HWA") answers.push($(this).text());
+  });
 
   if ($("#hwspace").length > 0) {
     $.each(questions, function(index, row) {
@@ -17,7 +14,7 @@ $(document).ready(function() {
       $("#q" + index + "").html(
         $("#q" + index + "")
           .html()
-          .replace("__", '<i id="aq' + index + '">__</i>')
+          .replace(/_/g, '<i class="aq' + index + '">__</i>')
       );
     });
   }
@@ -53,13 +50,15 @@ function loadhwspace(ele, id) {
   var button = document.createElement("BUTTON");
   var node = document.createTextNode(ele.value);
   button.appendChild(node);
-  button.setAttribute("id", "qbtn" + ele.value);
   button.setAttribute("ondblclick", "remove_operator(this.id)");
-  button.setAttribute("class", "btn  btn-outline-secondary");
+  button.setAttribute(
+    "class",
+    "qbtn" + ele.value + " btn  btn-outline-secondary"
+  );
 
-  var work = document.getElementById("a" + id);
+  var work = id;
   if (work === null) work = document.getElementById(id).parentNode;
-  console.log( id, work);
+  console.log(id, work);
   if (!work.classList.contains("question")) {
     work.innerHTML = "";
     work.appendChild(button);
@@ -87,11 +86,18 @@ if (hwspaceSection) {
     var target = event.target;
     var data = event.dataTransfer.getData("srcId");
     var copy = document.getElementById(data).cloneNode(true);
+    var className = target;
+    console.log(target.classList);
     var canDrop =
-      target.classList.contains("question") || target.id.includes("qbtn");
-      console.log(target);
+      target.classList.contains("question") || className.classList.value.includes("qbtn") || target.classList.value.includes("aq");
+    if (target.classList.contains("question")) {
+      className = target.firstElementChild;
+    } else if (className.classList.value.includes("qbtn")) {
+      className = target.parentNode;
+    }
+    console.log(className,canDrop);
     if (canDrop) {
-      loadhwspace(copy, target.id);
+      loadhwspace(copy, className);
     }
   });
 }

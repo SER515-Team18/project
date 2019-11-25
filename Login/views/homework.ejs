@@ -118,11 +118,11 @@
                 </div>
                 <hr>
                 <p align="center" id="hwspace"> </p>
-                <div class="card-body" style="text-align: center;">
-                    <ul>
+                <div class="card-body" style=display:none;">
+                    <ul id="HWQuestions">
                             <% Questions.forEach(function(questions){ %>
-                                    <li><%= questions.question %></li>
-                                    <li><%= questions.answer %></li>
+                                    <li id="HWQ"><%= questions.question %></li>
+                                    <li id="HWA"><%= questions.answer %></li>
                                 <% }); %>
                     </ul>
                        

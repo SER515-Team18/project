@@ -133,12 +133,18 @@ router.post('/login',
   });
   
 // Workspace
-router.get('/workspace', ensureAuthenticated, (req, res) =>
-  res.render('index', {
-    user: req.user,
-    grade: req.user.grade
-  })
-);
+router.get('/workspace', ensureAuthenticated, (req, res) =>{
+  HomeWork.find({}).exec(function(err,homeworks){
+    if(err){
+      console.log(err);
+    }
+    res.render('index', {
+      user: req.user,
+      grade: req.user.grade,
+      "Homework": homeworks
+    });
+  });
+});
 
 //updateUser
 router.post('/updateUser/:id' , (req, res) =>{

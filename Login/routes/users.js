@@ -37,6 +37,16 @@ router.get('/teacherdashboard', ensureAuthenticated, (req, res) => res.render('t
   user: req.user,
 }));
 
+//teacher view homeworks Page
+router.get('/teacherviewhomeworks', ensureAuthenticated, (req, res) => res.render('teacherViewHomeworks',{
+  user: req.user,
+}));
+
+//teacher Display Homework Page
+router.get('/teacherdisplayhomework', ensureAuthenticated, (req, res) => res.render('teacherDisplayHomework',{
+  user: req.user,
+}));
+
 
 // Register
 router.post('/register', (req, res) => {
@@ -288,7 +298,15 @@ router.get('/listStudents', ensureAuthenticated, (req,res) =>{
   
 });
 
-
+//teacher view homeworks
+router.get('/teacherViewHomeWorks', ensureAuthenticated, (req,res) => {
+    HomeWork.find({}).exec(function(err,homeworks){
+        if(err){
+          console.log(err);
+        }
+        res.render('teacherViewHomeworks', {"Homework": homeworks});
+    });
+});
 
 // Logout
 router.get('/logout', (req, res) => {

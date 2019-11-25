@@ -6,23 +6,23 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mySidebar" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                       </button>
-                    <a class="navbar-brand" href="#"  style=" text-align: center; display: block;">
-                    MathBuzz
-                    </a>
+                      <h2 class="text-white h2" style ="text-align: center;">Teacher Dashboard</h2>
                 </nav>
             <div class="container-fluid">
                 <div class="row">
             <div class="collapse"  id="mySidebar" style="min-height: -webkit-fill-available;">
                             <div class = "bg-dark p-4">
                                 <ul class="list-unstyled components">
+                                    <li><h5 class="text-white h6">Hi, <%= user.name %></h5></li><br>
                                     <li><h7 class="text-white h7"><a href="/users/logout">Logout</a></h7></li>
                                 </ul>
                             </div>  
                         </div>
                         
                 <div class="col" style="text-align:center; padding:10%;">  
-                        <a href="/users/createHomeWork" class="btn btn-group-justified btn-outline-secondary">Add Homework</a></hr>
-                        <a href="/users/listStudents" class="btn btn-group-justified btn-outline-secondary">View Students</a> 
+                        <a href="/users/createHomeWork" class="btn btn-group-justified btn-outline-secondary">Create Homework</a></hr>
+                        <a href="/users/listStudents" class="btn btn-group-justified btn-outline-secondary">View Students</a>
+                        <a href="#" class="btn btn-group-justified btn-outline-secondary">View Homeworks</a>  
                 </div>
            </div> 
         </div>

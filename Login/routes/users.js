@@ -37,6 +37,16 @@ router.get('/teacherdashboard', ensureAuthenticated, (req, res) => res.render('t
   user: req.user,
 }));
 
+//teacher view homeworks Page
+router.get('/teacherviewhomeworks', ensureAuthenticated, (req, res) => res.render('teacherViewHomeworks',{
+  user: req.user,
+}));
+
+//teacher Display Homework Page
+router.get('/teacherdisplayhomework', ensureAuthenticated, (req, res) => res.render('teacherDisplayHomework',{
+  user: req.user,
+}));
+
 
 // Register
 router.post('/register', (req, res) => {
@@ -108,7 +118,7 @@ router.post('/register', (req, res) => {
 
 // Login
 router.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/users/login' }),
+  passport.authenticate('local', { failureRedirect: '/users/login', failureFlash: true }),
   function(req, res) {
     if (req.user.email == "admin@gmail.com"){
       res.redirect('/users/adminDashboard');
@@ -123,12 +133,18 @@ router.post('/login',
   });
   
 // Workspace
-router.get('/workspace', ensureAuthenticated, (req, res) =>
-  res.render('index', {
-    user: req.user,
-    grade: req.user.grade
-  })
-);
+router.get('/workspace', ensureAuthenticated, (req, res) =>{
+  HomeWork.find({}).exec(function(err,homeworks){
+    if(err){
+      console.log(err);
+    }
+    res.render('index', {
+      user: req.user,
+      grade: req.user.grade,
+      "Homework": homeworks
+    });
+  });
+});
 
 //updateUser
 router.post('/updateUser/:id' , (req, res) =>{
@@ -281,7 +297,35 @@ router.get('/listStudents', ensureAuthenticated, (req,res) =>{
   });
   
 });
-  
+
+//teacher view homeworks
+router.get('/viewHomeWorksTeacher', ensureAuthenticated, (req,res) => {
+    HomeWork.find({}).exec(function(err, homeworks){
+        if(err){
+          console.log(err);
+        }
+        res.render('teacherViewHomeworks', {"Homework": homeworks});
+    });
+});
+
+//display homeworks for teacher
+router.get('/displayHomeworkTeacher/:id', (req, res) =>{
+    let query = {_id: req.params.id};
+
+    HomeWork.findById(query, function(err, homeworks){
+        res.render('teacherDisplayHomework', {"Questions": homeworks.questions});
+    });
+});
+
+//view student homework
+router.get('/studentHomework/:id', (req, res) =>{
+    let query = {_id: req.params.id};
+
+    HomeWork.findById(query, function(err, homeworks){
+        res.render('homework', {"Questions": homeworks.questions});
+    });
+});
+
 // Logout
 router.get('/logout', (req, res) => {
   req.logout();

@@ -1,5 +1,5 @@
 <!-- 
-    Author : Lakshmi Kala Pedarla
+    Author : Lakshmi Kala Pedarla, Narendra Mohan
     Version : 1.0
  -->
  <html>
@@ -25,7 +25,11 @@
                     </div>
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                        <div class="card-body" style="text-align: center;">
-                          <button type="button" class="btn btn-info">View Homework1</button>
+                          <% Homework.forEach(function(homework){ %>
+                              <% if (homework.grade == "1") { %>
+                                 <button type="button" class="btn btn-info"><a href="/users/displayHomeworkTeacher/<%= homework._id %>" style="color:#FFFFFF;"><%= homework.title %></a></button>
+                             <% } %>
+                         <% }); %>
                        </div>
                     </div>
                  </div>
@@ -39,7 +43,11 @@
                     </div>
                     <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
                        <div class="card-body" style="text-align: center;">
-                          <button type="button" class="btn btn-info">View Homework2</button>
+                           <% Homework.forEach(function(homework){ %>
+                              <% if (homework.grade == "6") { %>
+                                 <button type="button" class="btn btn-info"><a href="/users/displayHomeworkTeacher/<%= homework._id %>" style="color:#FFFFFF;"><%= homework.title %></a></button>
+                             <% } %>
+                         <% }); %>
                        </div>
                     </div>
                  </div>

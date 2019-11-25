@@ -118,7 +118,7 @@ router.post('/register', (req, res) => {
 
 // Login
 router.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/users/login' }),
+  passport.authenticate('local', { failureRedirect: '/users/login', failureFlash: true }),
   function(req, res) {
     if (req.user.email == "admin@gmail.com"){
       res.redirect('/users/adminDashboard');
@@ -314,6 +314,15 @@ router.get('/displayHomeworkTeacher/:id', (req, res) =>{
 
     HomeWork.findById(query, function(err, homeworks){
         res.render('teacherDisplayHomework', {"Questions": homeworks.questions});
+    });
+});
+
+//view student homework
+router.get('/studentHomework/:id', (req, res) =>{
+    let query = {_id: req.params.id};
+
+    HomeWork.findById(query, function(err, homeworks){
+        res.render('homework', {"Questions": homeworks.questions});
     });
 });
 

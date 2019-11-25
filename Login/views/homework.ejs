@@ -119,6 +119,15 @@
                 </div>
                 <hr>
                 <p align="center" id="hwspace"> </p>
+                <div class="card-body" style="text-align: center;">
+                    <ul>
+                            <% Questions.forEach(function(questions){ %>
+                                    <li><%= questions.question %></li>
+                                    <li><%= questions.answer %></li>
+                                <% }); %>
+                    </ul>
+                       
+                     </div>
             </div>
             <div class="col-md-1 pointsSection">
                 <div class="btn">

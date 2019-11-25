@@ -299,12 +299,21 @@ router.get('/listStudents', ensureAuthenticated, (req,res) =>{
 });
 
 //teacher view homeworks
-router.get('/teacherViewHomeWorks', ensureAuthenticated, (req,res) => {
-    HomeWork.find({}).exec(function(err,homeworks){
+router.get('/viewHomeWorksTeacher', ensureAuthenticated, (req,res) => {
+    HomeWork.find({}).exec(function(err, homeworks){
         if(err){
           console.log(err);
         }
         res.render('teacherViewHomeworks', {"Homework": homeworks});
+    });
+});
+
+//display homeworks for teacher
+router.get('/displayHomeworkTeacher/:id', (req, res) =>{
+    let query = {_id: req.params.id};
+
+    HomeWork.findById(query, function(err, homeworks){
+        res.render('teacherDisplayHomework', {"Questions": homeworks.questions});
     });
 });
 

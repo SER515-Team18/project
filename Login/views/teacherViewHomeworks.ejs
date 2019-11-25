@@ -27,7 +27,7 @@
                        <div class="card-body" style="text-align: center;">
                           <% Homework.forEach(function(homework){ %>
                               <% if (homework.grade == "1") { %>
-                                 <button type="button" class="btn btn-info"><a href="#" style="color:#FFFFFF;"><%= homework.title %></a></button>
+                                 <button type="button" class="btn btn-info"><a href="/users/displayHomeworkTeacher/<%= homework._id %>" style="color:#FFFFFF;"><%= homework.title %></a></button>
                              <% } %>
                          <% }); %>
                        </div>
@@ -45,7 +45,7 @@
                        <div class="card-body" style="text-align: center;">
                            <% Homework.forEach(function(homework){ %>
                               <% if (homework.grade == "6") { %>
-                                 <button type="button" class="btn btn-info"><a href="#" style="color:#FFFFFF;"><%= homework.title %></a></button>
+                                 <button type="button" class="btn btn-info"><a href="/users/displayHomeworkTeacher/<%= homework._id %>" style="color:#FFFFFF;"><%= homework.title %></a></button>
                              <% } %>
                          <% }); %>
                        </div>

@@ -9,7 +9,7 @@
         <body>
            <nav class="navbar navbar-dark bg-dark">
            <h2 class="text-white h2">Homework1</h2>
-           <a class="navbar-brand" href="/users/teacherViewHomeworks"  style=" text-align: center; display: block;">
+           <a class="navbar-brand" href="/users/viewHomeworksTeacher"  style=" text-align: center; display: block;">
            View Homeworks
            </a>
        </nav>
@@ -23,18 +23,12 @@
          </tr>
        </thead>
        <tbody>
-         <tr>
-           <td scope="row">Question1</td>
-           <td scope="row">Answer1</td>
-         </tr>
-         <tr>
-           <td scope="row">Question2</td>
-           <td scope="row">Answer2</td>
-         </tr>
-         <tr>
-           <td scope="row">Question3</td>
-           <td scope="row">Answer3</td>
-         </tr>
+         <% Questions.forEach(function(question){ %>
+          <tr>
+              <td scope="row"><%= question.question %></td>
+              <td scope="row"><%= question.answer %></td>
+            </tr>
+        <%  }); %>
          </tbody>
      </div>
      </div>

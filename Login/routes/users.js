@@ -118,7 +118,7 @@ router.post('/register', (req, res) => {
 
 // Login
 router.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/users/login' }),
+  passport.authenticate('local', { failureRedirect: '/users/login', failureFlash: true }),
   function(req, res) {
     if (req.user.email == "admin@gmail.com"){
       res.redirect('/users/adminDashboard');

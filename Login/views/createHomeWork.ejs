@@ -1,11 +1,15 @@
 <!-- Author: Lakshmi Kala Pedarla, Narendra Mohan
   Version:1.0 -->
 
-    <div style="padding: 5%;">
-        <h4>
-            <center>Create Homework</center>
-         </h4>
-        <br/>
+  <nav class="navbar navbar-dark bg-dark">
+      <h2 class="text-white h2">Create Homework</h2>
+      <a class="navbar-brand" href="/users/teacherdashboard"  style=" text-align: center; display: block;">
+      Go to Dashboard
+      </a>
+  </nav>  
+  
+  <div style="padding: 5%;">
+         
             <% include ./partials/messages %>
             <form action="/users/createHomeWork" method="POST">
                <div class="form-group">

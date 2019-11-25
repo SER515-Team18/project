@@ -317,6 +317,15 @@ router.get('/displayHomeworkTeacher/:id', (req, res) =>{
     });
 });
 
+//view student homework
+router.get('/studentHomework/:id', (req, res) =>{
+    let query = {_id: req.params.id};
+
+    HomeWork.findById(query, function(err, homeworks){
+        res.render('homework', {"Questions": homeworks.questions});
+    });
+});
+
 // Logout
 router.get('/logout', (req, res) => {
   req.logout();

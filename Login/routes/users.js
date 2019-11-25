@@ -37,6 +37,16 @@ router.get('/teacherdashboard', ensureAuthenticated, (req, res) => res.render('t
   user: req.user,
 }));
 
+//teacher view homeworks Page
+router.get('/teacherviewhomeworks', ensureAuthenticated, (req, res) => res.render('teacherViewHomeworks',{
+  user: req.user,
+}));
+
+//teacher Display Homework Page
+router.get('/teacherdisplayhomework', ensureAuthenticated, (req, res) => res.render('teacherDisplayHomework',{
+  user: req.user,
+}));
+
 
 // Register
 router.post('/register', (req, res) => {

@@ -11,17 +11,17 @@ function fetchHistory() {
 function loadHistory() {
 
     var resultStr = fetchHistory();
-    if (resultStr != undefined)
-        $("#widgetActivity").append(resultStr, "<br/>");
+    if (resultStr != undefined && $("#actionHistory li:last-child").text() != resultStr)
+        $("#actionHistory").append("<li>"+resultStr+ "</li>");
 }
 function clearHistory() {
-    $("#widgetActivity").empty();
+    $("#actionHistory").empty();
 
 }
 
 $(window).on('beforeunload', function () {
 
-    var historyContent = $("#widgetActivity").html();
+    var historyContent = $("#actionHistory").html();
     sessionStorage.setItem('HistoryContent', historyContent)
     
 });
@@ -31,7 +31,7 @@ $(window).on('load', function () {
     if (sessionStorage.getItem("HistoryContent") != "") {
         HistoryString = sessionStorage.getItem('HistoryContent');
         if (HistoryString != "undefined" )
-            $("#widgetActivity").html(HistoryString);
+            $("#actionHistory").html(HistoryString);
     }
 });
 

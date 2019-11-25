@@ -10,25 +10,24 @@ function fetchResultText() {
 
 function evaluateResult(grade, evalText) {
     switch (grade) {
-        case 1,6:
-            evalGradeOne(evalText);
-            break;
         case 9:
             evalGradeNine(evalText);
             break;
 
         default:
+            evalGradeOne(evalText);
             break;
+        
     }
 }
 
 function evalGradeOne(evalText) {
     try {
         var result = math.evaluate(evalText);
-        $("#mathResult").html(result);
+            if(!isNaN(result)) $("#mathResult").html(result);
     } catch (e) {
         if (e instanceof SyntaxError) {
-            $("#mathResult").html(e.message);
+            //...
         }
     }
 }

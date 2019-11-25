@@ -1,22 +1,119 @@
+body {
+  background-color: rgb(244, 243, 239);
+}
+hr{
+    border-color: #F1EAE0;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
 .container-fluid {
-    margin: 0 !important;
-    height: 100vh;
+  margin: 0 !important;
+  height: 90vh;
 }
 
-div#workspaceSections,div#hwSections {
-    height: 100%;
+.btn-group-xs > .btn, .btn-xs {
+    padding: .25rem .4rem;
+    font-size: .650rem;
+    line-height: .5;
+    border-radius: .2rem;
+  }
+
+div#workspaceSections,
+div#hwSections {
+  height: 100%;
 }
 
 .mainSection,
 .resultSection,
 .widgetSection,
 .hwSection,
+.historySection,
 .pointsSection {
-    border-right: 1px #ced4da solid;
-
+  border-radius: 3px;
+  box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
+  background-color: #fff;
+  color: #252422;
+  margin: 10px 10px 0 5px;
+  z-index: 1;
+  max-height:100%;
+  overflow-y:auto;
+  overflow-x: hidden;
+}
+.historySection {
+  margin-right: 10px !important;
 }
 
-.col-1 input {
-    width: 25px;
+.widgetSection {
+  margin-left: 10px;
+  max-width: 14%;
 }
 
+
+.sidenav {
+  height: 100%;
+  background-color: #343a40;
+  overflow-x: hidden;
+  padding-top: 20px;
+  width: 40%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+.main {
+  margin-left: 40%;
+  padding: 0px 10px;
+}
+.login-main-text {
+  margin-top: 20%;
+  padding: 60px;
+  color: #f4f3ef;
+}
+.loginCard {
+  margin-top: 55%;
+}
+
+.loginCard input {
+  border: 1px solid rgba(244, 243, 239, 0.8);
+}
+
+.loginCard input:focus {
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 1px rgba(168, 149, 149, 0.075) inset,
+    0 0 8px rgba(244, 243, 239, 0.6);
+  outline: 0 none;
+}
+
+#Numbers div.row,#Operators div.row {
+    max-width: 100%;
+    margin-left: -12px;
+}
+
+.navbar-toggler, .navbar-toggler:focus{
+    border: 0 !important;
+    outline: none;
+}
+
+#mySidebar div{
+    height: 100%;
+}
+
+.collapsing {
+    transition: none;
+}
+
+#mySidebar a{
+    color:   #F1EAE0;
+}
+
+#mySidebar a:hover{
+    color: rgba(244, 243, 239, 0.8);
+}
+
+.wk-btn{
+    margin: 0 2px 2px 2px;
+}
+
+#profile-tab.nav-link a, #profile-tab.nav-link a:active{
+    color: black !important;
+}

@@ -281,7 +281,17 @@ router.get('/listStudents', ensureAuthenticated, (req,res) =>{
   });
   
 });
-  
+
+//teacher view homeworks
+router.get('/teacherViewHomeWorks', ensureAuthenticated, (req,res) => {
+    HomeWork.find({}).exec(function(err,homeworks){
+        if(err){
+          console.log(err);
+        }
+        res.render('teacherViewHomeworks', {"Homework": homeworks});
+    });
+});
+
 // Logout
 router.get('/logout', (req, res) => {
   req.logout();

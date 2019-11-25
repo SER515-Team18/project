@@ -7,33 +7,77 @@ $(document).ready(function() {
   });
 
   if ($("#hwspace").length > 0) {
+    var questionTxt = "";
     $.each(questions, function(index, row) {
-      $("#hwspace").append(
-        '<p class="question" id="q' + index + '">' + questions[index] + "</p>"
-      );
-      $("#q" + index + "").html(
-        $("#q" + index + "")
-          .html()
-          .replace(/_/g, '<i class="aq' + index + '">__</i>')
-      );
+      if (index % 2 == 0) {
+        questionTxt += "<div class='row asdfsd' >";
+      }
+      questionTxt +=
+        '<p class="col question" id="q' +
+        index +
+        '" style="border: 0.5px solid #F1EAE0; border-radius:6px;"> ' +
+        questions[index] +
+        "</p>";
+      if (index % 2 == 1 && index > 0) {
+        questionTxt += "</div>";
+        $("#hwspace").append(questionTxt);
+        for (let idx = index - 1; idx <= index; idx++) {
+          console.log(idx);
+          $("#q" + idx + "").html(
+            $("#q" + idx + "")
+              .html()
+              .replace(/_/g, '<i class="aq' + idx + '">___</i>')
+          );
+        }
+        questionTxt = "";
+      }
     });
   }
+
+  $("#totalMarks").text(questions.length);
 });
 
 function checkHW() {
   var listItems = $("#hwspace p");
   var count = 0;
+  var aid;
   listItems.each(function(index, li) {
-    var aid = $(li)
-      .children(":first")
-      .children(":first")
-      .attr("id");
-    if (typeof aid != "undefined") aid = aid.charAt(4);
+    if (
+      $(li)
+        .children()
+        .children()
+        .end().length > 1
+    ) {
+      aid = null;
+      var temp = $(li)
+        .children()
+        .children()
+        .end();
+      console.log(temp[0].children[0]);
+      for (let idx = 0; idx < temp.length; idx++) {
+        var num =
+          temp[idx].children[0] != undefined
+            ? temp[idx].children[0].className.split(" ")[0]
+            : null;
+        if (typeof num == "string" || num != null) {
+          num = num.charAt(4);
+
+          aid = aid * 10 + ~~num;
+          console.log(num, aid);
+        }
+      }
+    } else {
+      aid = $(li)
+        .children(":first")
+        .children(":first")
+        .attr("class");
+      if (typeof aid != "undefined") aid = aid.split(" ")[0].charAt(4);
+    }
 
     if (answers[index] == aid) {
       $(this).css("color", "green");
       count++;
-    } else if (aid != undefined) {
+    } else if (aid != undefined && aid != null) {
       $(this).css("color", "red");
     }
   });
@@ -89,13 +133,15 @@ if (hwspaceSection) {
     var className = target;
     console.log(target.classList);
     var canDrop =
-      target.classList.contains("question") || className.classList.value.includes("qbtn") || target.classList.value.includes("aq");
+      target.classList.contains("question") ||
+      className.classList.value.includes("qbtn") ||
+      target.classList.value.includes("aq");
     if (target.classList.contains("question")) {
       className = target.firstElementChild;
     } else if (className.classList.value.includes("qbtn")) {
       className = target.parentNode;
     }
-    console.log(className,canDrop);
+    console.log(className, canDrop);
     if (canDrop) {
       loadhwspace(copy, className);
     }

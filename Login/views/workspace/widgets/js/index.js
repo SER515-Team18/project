@@ -1,20 +1,22 @@
 /*
  * author Hari Krishnan Puthiya Veetil,Sai Vinay G
- * version :1.0	
+ * version :1.0
  */
 
 var selected;
 
 function addvalueToWorkSpace(id) {
-  var ele = document.getElementById(id);
-  if (id === "help-new") createNewLine();
-  else {
-    var element = getElement(ele);
-    var work = document.getElementById("workspace");
-    work.appendChild(element);
+  if ((grade == 1 && $("#workspace").children().length < 5) || grade == 6) {
+    var ele = document.getElementById(id);
+    if (id === "help-new") createNewLine();
+    else {
+      var element = getElement(ele);
+      var work = document.getElementById("workspace");
+      work.appendChild(element);
+    }
   }
+  loadHistory();
 }
-
 function getElement(ele) {
   var button = document.createElement("BUTTON");
   var node = document.createTextNode(ele.value);
@@ -61,12 +63,16 @@ if (workspace) {
 
       if (canDrop) {
         var work = document.getElementById("workspace");
-        work.appendChild(element);
+        if (
+          (grade == 1 && $("#workspace").children().length < 5) ||
+          grade == 6
+        ) {
+          work.appendChild(element);
+        }
       } else if (target.parentNode.id == "workspace") {
         event.target.parentNode.insertBefore(element, event.target.nextSibling);
-	  }
-	loadHistory();
-	  
+      }
+      loadHistory();
     }
   });
 }
@@ -76,11 +82,10 @@ function dragOver(event) {
   console.log(res);
   if (res === "true")
     event.target.parentNode.insertBefore(selected, event.target);
-  else if (res === "false" || res == undefined){
+  else if (res === "false" || res == undefined) {
     event.target.parentNode.insertBefore(selected, event.target.nextSibling);
   }
   loadHistory();
-
 }
 
 function dragEnd() {

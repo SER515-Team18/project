@@ -227,43 +227,24 @@ router.post('/searchUserToDelete',(req,res) => {
 
 //Add new homework or add questions to a homework.
 router.post('/createHomeWork', (req,res) => {
-  if(req.body.addQuestion){
-    HomeWork.findOne({ title: req.body.title, grade: req.body.gradeType }).then(homework => {
-      if (homework) {
-        const questions = {question: req.body.question, answer: req.body.answer}
+    HomeWork.findOne({title: req.body.title, grade: req.body.gradeType}).then(homework =>{
+      if(homework){
+        const questions = {question: req.body.question, answer: req.body.answer};
         HomeWork.updateOne(
           { title: req.body.title }, 
           { $push: { questions: questions } },
           function (error) {
             if (error) {
               console.log(err);
-              res.redirect('/users/createHomeWork');
             } else {
               req.flash(
                 'success_msg',
-                'Question added'
+                'Question added. You can add more questions'
               );
-              res.redirect('/users/createHomeWork');
+              return res.redirect('/users/createHomeWork');
             }
           }
-        );  
-      }
-      else{
-        req.flash(
-          'error_msg',
-          'Homework does not exist!'
         );
-        res.redirect('/users/createHomeWork');
-      }
-    });
-  } else if(req.body.submit){
-    HomeWork.findOne({title: req.body.title, grade: req.body.gradeType}).then(homework =>{
-      if(homework){
-        req.flash(
-          'error_msg',
-          'Home work already exists!'
-        );
-        res.redirect('/users/createHomeWork');
       }
       else{
         const newHomeWork = new HomeWork({
@@ -279,15 +260,14 @@ router.post('/createHomeWork', (req,res) => {
           .then(homework => {
             req.flash(
               'success_msg',
-              'Homework added'
+              'New homework added'
             );
-            res.redirect('/users/teacherdashboard');
+            res.redirect('/users/createHomeWork');
           })
           .catch(err => console.log(err));
       }
     })
-  }
-}); 
+  }); 
 
 //list of students
 router.get('/listStudents', ensureAuthenticated, (req,res) =>{

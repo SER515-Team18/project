@@ -40,7 +40,6 @@ function checkHW() {
 }
 
 function pointsScored(points) {
-  console.log(points);
   if (points < 0) points = 0;
   $("#score").html(points);
 }
@@ -52,7 +51,6 @@ function loadhwspace(ele, id) {
   button.setAttribute("id", ele.value);
   button.setAttribute("ondblclick", "remove_operator(this.id)");
   var work = document.getElementById("a" + id);
-  console.log("a" + id, work);
   work.innerHTML = "";
   work.appendChild(button);
 }
@@ -76,7 +74,6 @@ hwspaceSection.addEventListener("drop", function(event) {
   var data = event.dataTransfer.getData("srcId");
   var copy = document.getElementById(data).cloneNode(true);
   var canDrop = target.classList.contains("question");
-  console.log("dropped", target, data, copy, target.id);
 
   if (canDrop) {
     loadhwspace(copy, target.id);

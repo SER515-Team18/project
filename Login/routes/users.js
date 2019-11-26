@@ -47,6 +47,8 @@ router.get('/teacherdisplayhomework', ensureAuthenticated, (req, res) => res.ren
   user: req.user,
 }));
 
+// Help Page
+router.get('/viewHelpPage', ensureAuthenticated, (req, res) => res.render('help'));
 
 // Register
 router.post('/register', (req, res) => {

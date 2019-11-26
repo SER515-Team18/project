@@ -295,7 +295,7 @@ router.get('/displayHomeworkTeacher/:id', (req, res) =>{
     let query = {_id: req.params.id};
 
     HomeWork.findById(query, function(err, homeworks){
-        res.render('teacherDisplayHomework', {"Questions": homeworks.questions});
+        res.render('teacherDisplayHomework', {"Questions": homeworks.questions, "Title": homeworks.title});
     });
 });
 

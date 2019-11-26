@@ -63,6 +63,7 @@ function disableNumbers(flag) {
 }
 
 function disableOperators(flag) {
+  var grade = localStorage.getItem('grade');
 	if(flag)
 	{
 		$("#subtraction").attr("disabled", true);

@@ -18,15 +18,17 @@ $(document).ready(function() {
         '" style="border: 0.5px solid #F1EAE0; border-radius:6px;"> ' +
         questions[index] +
         "</p>";
-      if (index % 2 == 1 && index > 0) {
+      if (index % 2 == 1 && index > 0 || questions.length == 1) {
         questionTxt += "</div>";
         $("#hwspace").append(questionTxt);
+        if(questions.length == 1) index = 1;
         for (let idx = index - 1; idx <= index; idx++) {
           $("#q" + idx + "").html(
             $("#q" + idx + "")
               .html()
               .replace(/_/g, '<i class="aq' + idx + ' placeH">___</i>')
           );
+          if(questions.length == 1) break;
         }
         questionTxt = "";
       }

@@ -22,7 +22,7 @@ function getElement(ele) {
   var node = document.createTextNode(ele.value);
   button.appendChild(node);
   button.setAttribute("id", ele.value);
-  button.setAttribute("ondblclick", "remove_operator(this.id)");
+  button.setAttribute("ondblclick", "remove_operator(this)");
   button.setAttribute("class", "btn  btn-outline-secondary wk-btn");
   button.setAttribute("draggable", "true");
   button.setAttribute("ondragend", "dragEnd()");
@@ -36,7 +36,53 @@ function createNewLine() {
 }
 function clearWorkspace() {
   $("#workspace").empty();
+  disableNumbers(false);
+  if(localStorage.getItem('grade') == 1)
+  disableOperators(true);
+  clearResult();
 }
+
+clearWorkspace();
+
+function clearResult() {
+  $("#mathResult").empty();
+}
+
+function disableNumbers(flag) {
+	if(flag)
+	{
+		$("#Numbers")
+		.find("[draggable=true]")
+		.attr("disabled", true);
+	}
+	else{
+		$("#Numbers")
+		.find("[draggable=true]")
+		.attr("disabled", false);
+	}
+}
+
+function disableOperators(flag) {
+	if(flag)
+	{
+		$("#subtraction").attr("disabled", true);
+    $("#addition").attr("disabled", true);
+    if(grade == 6){
+      $("#multiplication").attr("disabled", true);
+      $("#division").attr("disabled", true);
+    }
+	}
+	else{
+		$("#subtraction").attr("disabled", false);
+    $("#addition").attr("disabled", false);
+    if(grade == 6){
+      $("#multiplication").attr("disabled", false);
+      $("#division").attr("disabled", false);
+    }
+
+	}
+}
+
 var workspaceSection = document.querySelector(".mainSection");
 var workspace = document.getElementById("workspace");
 var widgets = document.querySelectorAll('[draggable="true"]');
@@ -79,7 +125,6 @@ if (workspace) {
 
 function dragOver(event) {
   var res = isBefore(selected, event.target);
-  console.log(res);
   if (res === "true")
     event.target.parentNode.insertBefore(selected, event.target);
   else if (res === "false" || res == undefined) {

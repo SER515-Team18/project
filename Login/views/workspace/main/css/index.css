@@ -117,3 +117,8 @@ div#hwSections {
 #profile-tab.nav-link a, #profile-tab.nav-link a:active{
     color: black !important;
 }
+
+.btn.disabled, .btn:disabled{
+    opacity: 1 !important;
+    cursor: not-allowed;
+}

@@ -22,11 +22,10 @@ $(document).ready(function() {
         questionTxt += "</div>";
         $("#hwspace").append(questionTxt);
         for (let idx = index - 1; idx <= index; idx++) {
-          console.log(idx);
           $("#q" + idx + "").html(
             $("#q" + idx + "")
               .html()
-              .replace(/_/g, '<i class="aq' + idx + '">___</i>')
+              .replace(/_/g, '<i class="aq' + idx + ' placeH">___</i>')
           );
         }
         questionTxt = "";
@@ -35,6 +34,12 @@ $(document).ready(function() {
   }
 
   $("#totalMarks").text(questions.length);
+
+  if (localStorage.getItem("grade") == 6) {
+    $(".grade6").show();
+  } else {
+    $(".grade6").hide();
+  }
 });
 
 function checkHW() {
@@ -48,22 +53,20 @@ function checkHW() {
         .children()
         .end().length > 1
     ) {
-      aid = null;
+      aid = "";
       var temp = $(li)
         .children()
         .children()
         .end();
-      console.log(temp[0].children[0]);
       for (let idx = 0; idx < temp.length; idx++) {
         var num =
           temp[idx].children[0] != undefined
             ? temp[idx].children[0].className.split(" ")[0]
-            : null;
-        if (typeof num == "string" || num != null) {
+            : "";
+        if (typeof num == "string" || num != "") {
           num = num.charAt(4);
 
-          aid = aid * 10 + ~~num;
-          console.log(num, aid);
+          aid = aid + num;
         }
       }
     } else {
@@ -75,10 +78,15 @@ function checkHW() {
     }
 
     if (answers[index] == aid) {
-      $(this).css("color", "green");
+      $(this).css("color", "#00ad45");
+      $(this).css("border", "0.5px dotted #00ad45");
       count++;
-    } else if (aid != undefined && aid != null) {
-      $(this).css("color", "red");
+    } else if (aid != undefined && aid != "") {
+      $(this).css("color", "#fe423f");
+      $(this).css("border", "0.5px dotted #fe423f");
+    } else if (aid == "") {
+      $(this).css("color", "#5d666fe8");
+      $(this).css("border", "0.5px solid #F1EAE0");
     }
   });
 
@@ -94,7 +102,7 @@ function loadhwspace(ele, id) {
   var button = document.createElement("BUTTON");
   var node = document.createTextNode(ele.value);
   button.appendChild(node);
-  button.setAttribute("ondblclick", "remove_operator(this.id)");
+  button.setAttribute("ondblclick", "remove_answer(this)");
   button.setAttribute(
     "class",
     "qbtn" + ele.value + " btn  btn-outline-secondary"
@@ -102,7 +110,6 @@ function loadhwspace(ele, id) {
 
   var work = id;
   if (work === null) work = document.getElementById(id).parentNode;
-  console.log(id, work);
   if (!work.classList.contains("question")) {
     work.innerHTML = "";
     work.appendChild(button);
@@ -131,7 +138,6 @@ if (hwspaceSection) {
     var data = event.dataTransfer.getData("srcId");
     var copy = document.getElementById(data).cloneNode(true);
     var className = target;
-    console.log(target.classList);
     var canDrop =
       target.classList.contains("question") ||
       className.classList.value.includes("qbtn") ||
@@ -141,9 +147,22 @@ if (hwspaceSection) {
     } else if (className.classList.value.includes("qbtn")) {
       className = target.parentNode;
     }
-    console.log(className, canDrop);
     if (canDrop) {
       loadhwspace(copy, className);
     }
   });
+}
+
+function remove_answer(id) {
+  $(id)
+    .parent()
+    .parent()
+    .css("color", "#5d666fe8");
+  $(id)
+    .parent()
+    .parent()
+    .css("border", "0.5px solid #F1EAE0");
+  $(id)
+    .parent()
+    .html("___");
 }

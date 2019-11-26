@@ -1,6 +1,9 @@
 function remove_operator(id) {
-	var element = document.getElementById(id);
-	element.parentNode.removeChild(element);
+	id.remove();
+	if(fetchResultText() == "")
+		clearResult();
+	else
+		loadHistory();
 }
 
 $("body").on('DOMSubtreeModified', ".mainSection", function () {

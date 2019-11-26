@@ -7,3 +7,10 @@
 #hwSections div{
     color :#5d666fe8;
 }
+
+.placeH{
+    color: white;
+    border: 0.4px gray dashed;
+    border-radius: .25rem;
+    padding: 10px 5px 15px 5px;
+}

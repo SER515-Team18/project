@@ -9,7 +9,6 @@ $(document).ready(function() {
   if ($("#hwspace").length > 0) {
     var questionTxt = "";
     $.each(questions, function(index, row) {
-      console.log(index,questions[index],answers[index]);
       if (index % 2 == 0) {
         questionTxt += "<div class='row asdfsd' >";
       }

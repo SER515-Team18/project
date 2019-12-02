@@ -1,9 +1,14 @@
+<!-- Author: Archana Madhavan, Narendra Mohan
+  Version:1.0 -->
+  <nav class="navbar navbar-dark bg-dark">
+    <h2 class="text-white h2">Register User</h2>
+    <a class="navbar-brand" href="/users/adminDashboard"  style=" text-align: center; display: block;">
+    Go to Dashboard
+    </a>
+</nav>
 <div class="row mt-5">
   <div class="col-md-6 m-auto">
     <div class="card card-body">
-      <h1 class="text-center mb-3">
-        <i class="fas fa-user-plus"></i> Register
-      </h1>
       <% include ./partials/messages %>
       <form action="/users/register" method="POST">
         <div class="form-group">
@@ -28,17 +33,16 @@
             value="<%= typeof email != 'undefined' ? email : '' %>"
           />
         </div>
-		    <div class="form-group">
-          <label for="grade">Grade</label>
-          <input
-            type="grade"
-            id="grade"
-            name="grade"
-            class="form-control"
-            placeholder="Enter Grade"
-            value="<%= typeof grade != 'undefined' ? grade : '' %>"
-          />
-        </div>
+		    
+        <div class="form-group">
+          <label for="grade">Select Role</label>
+          <select type="grade" name="grade" id ="grade">
+             <option value="Grade1">Grade 1 Student</option>
+             <option value="Grade6">Grade 6 Student</option>
+             <option value="teacher">Teacher</option>
+          </select>
+       </div>  
+
         <div class="form-group">
           <label for="password">Password</label>
           <input
@@ -46,7 +50,7 @@
             id="password"
             name="password"
             class="form-control"
-            placeholder="Create Password"
+            placeholder="Enter Password"
             value="<%= typeof password != 'undefined' ? password : '' %>"
           />
         </div>
@@ -61,11 +65,11 @@
             value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
           />
         </div>
-        <button type="submit" class="btn btn-primary btn-block">
-          Register
+        <button type="submit" class="btn btn-secondary btn-block">
+          Submit
         </button>
       </form>
-      <p class="lead mt-4">Have An Account? <a href="/users/login">Login</a></p>
+      <p class="lead mt-4" style="display: none;">Have An Account? <a href="/users/login">Login</a></p>
     </div>
   </div>
 </div>

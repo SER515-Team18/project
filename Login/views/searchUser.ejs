@@ -1,0 +1,35 @@
+<!-- Author: Archana Madhavan, Narendra Mohan
+  Version:1.0 -->
+  <nav class="navbar navbar-dark bg-dark">
+    <h2 class="text-white h2">Search User</h2>
+    <a class="navbar-brand" href="/users/adminDashboard"  style=" text-align: center; display: block;">
+    Go to Dashboard
+    </a>
+</nav>
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <% include ./partials/messages %>
+        <form action="/users/searchUser" method="POST">
+          <div class="form-group">
+            <label for="name">Search Email to be Updated</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              placeholder="Enter email"
+              value="<%= typeof email != 'undefined' ? email : '' %>"
+            />
+          </div>
+            <button type="submit" class="btn btn-secondary btn-block">
+            Search
+          </button>
+        </form>
+ 
+        
+        
+        
+      </div>
+    </div>
+  </div>

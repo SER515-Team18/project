@@ -1,0 +1,159 @@
+<html>
+
+<head></head>
+
+<body>
+
+        <nav class="navbar navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mySidebar" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                <a class="navbar-brand" href="#"  style="display: block;">
+                    MathBuzz
+                </a>
+            </nav>
+    <div class="container-fluid">
+        <div class="row" id="hwSections">
+                <div class="collapse"  id="mySidebar">
+                        <div class = "bg-dark p-4">
+                            <ul class="list-unstyled components">
+                                <li><p class="text-white h7"><a href="/users/workspace">Home</a></p></li>
+                                <li><p class="text-white h7"><a href="/users/viewHelpPage">Help</a></p></li>
+                                <li><p class="text-white h7"><a href="/users/logout">Logout</a></p></li>
+                            </ul>
+                        </div>  
+                    </div>
+            <div class="col widgetSection">
+                <div id=Operators>
+                    <p style="padding-top: .375rem;">Operators</p> 
+                    <div class="row">
+
+                        <div class="col-4">
+                            <input type="button" id="hwaddition" value="+"  
+                                draggable="true"  class="btn  btn-outline-secondary">
+                        </div>
+                        <div class="col-4">
+                            <input type="button" id="hwsubtraction" value="-"  
+                                draggable="true"  class="btn  btn-outline-secondary">
+                        </div>
+                        
+                    </div><p></p>
+                    <div class="row grade6">
+
+                            <div class="col-4">
+                                <input type="button" id="hwmultiplication" value="*"  
+                                    draggable="true"  class="btn  btn-outline-secondary">
+                            </div>
+                            <div class="col-4">
+                                <input type="button" id="hwdivision" value="/"  
+                                    draggable="true"  class="btn  btn-outline-secondary">
+                            </div>
+                            <div class="col-4">
+                                    <input type="button" id="hwdot" value="."  
+                                        draggable="true"  class="btn  btn-outline-secondary">
+                                </div>
+                            
+                        </div>
+
+                </div>
+                <br>
+                <div id=Numbers>
+                    <p>Numbers</p>
+                    <div class="row">
+                        <div class="col-4">
+                            <input type="button" id="hwnumber1" value="1"  
+                                draggable="true"  class="btn  btn-outline-secondary">
+                        </div>
+                        <div class="col-4">
+                            <input type="button" id="hwnumber2" value="2"  
+                                draggable="true"  class="btn  btn-outline-secondary">
+                        </div>
+                        <div class="col-4">
+                            <input type="button" id="hwnumber3" value="3"  
+                                draggable="true"  class="btn  btn-outline-secondary">
+                        </div>
+                    </div> <p> </p>
+                    <div class="row">
+                        <div class="col-4">
+                            <input type="button" id="hwnumber4" value="4"  
+                                draggable="true"  class="btn  btn-outline-secondary">
+                        </div>
+                        <div class="col-4">
+                            <input type="button" id="hwnumber5" value="5"  
+                                draggable="true"  class="btn  btn-outline-secondary">
+                        </div>
+                        <div class="col-4">
+                            <input type="button" id="hwnumber6" value="6"  
+                                draggable="true"  class="btn  btn-outline-secondary">
+                        </div>
+                    </div> <p></p>
+                    <div class="row">
+                        <div class="col-4">
+                            <input type="button" id="hwnumber7" value="7"  
+                                draggable="true"  class="btn  btn-outline-secondary">
+                        </div>
+                        <div class="col-4">
+                            <input type="button" id="hwnumber8" value="8"  
+                                draggable="true"  class="btn  btn-outline-secondary">
+                        </div>
+                        <div class="col-4">
+                            <input type="button" id="hwnumber9" value="9"  
+                                draggable="true"  class="btn  btn-outline-secondary">
+                        </div>
+                    </div> <p></p>
+                    <div class="row">
+                        <div class="col-4" style="margin-left: 48.5px;">
+                            <input type="button" id="hwnumber0" value="0"  
+                                draggable="true"  class="btn  btn-outline-secondary">
+                        </div>
+                    </div>
+                    </div>
+                    <br>
+                    <div class="grade6" style="display: none;">
+                            <p>Paranthesis</p>
+                            <div class="row">
+        
+                                <div class="col-3">
+                                    <input type="button" id="hwleft_Paranthesis" value="("  
+                                        draggable="true"  class="btn  btn-outline-secondary">
+                                </div>
+                                <div class="col-3">
+                                    <input type="button" id="hwright_paranthesis" value=")"  
+                                        draggable="true"  class="btn  btn-outline-secondary">
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                
+
+
+            <div class="col hwSection">
+                <div class="btn">
+                    <div  align="center">Homework</div>
+                </div>
+                <hr>
+                <p align="center" id="hwspace"> </p>
+                <div class="card-body" style=display:none;">
+                    <ul id="HWQuestions">
+                            <% Questions.forEach(function(questions){ %>
+                                    <li id="HWQ"><%= questions.question %></li>
+                                    <li id="HWA"><%= questions.answer %></li>
+                                <% }); %>
+                    </ul>
+                       
+                     </div>
+            </div>
+            <div class="col-md-1 pointsSection">
+                <div class="btn">
+                    <div >Score</div>
+                </div>
+                <hr>
+                <div id="finalMarks">
+                    <h4> <span id='score'>0</span>/<span id="totalMarks"></span> </h4>
+
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

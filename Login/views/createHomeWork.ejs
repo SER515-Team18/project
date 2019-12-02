@@ -1,0 +1,60 @@
+<!-- Author: Lakshmi Kala Pedarla, Narendra Mohan
+  Version:1.0 -->
+
+  <nav class="navbar navbar-dark bg-dark">
+      <h2 class="text-white h2">Create Homework</h2>
+      <a class="navbar-brand" href="/users/teacherdashboard"  style=" text-align: center; display: block;">
+      Go to Dashboard
+      </a>
+  </nav>  
+  
+  <div style="padding: 5%;">
+         
+            <% include ./partials/messages %>
+            <form action="/users/createHomeWork" method="POST">
+               <div class="form-group">
+                  <input
+                    type="title"
+                    id="title"
+                    name="title"
+                    class="form-control"
+                    placeholder="Enter Title"
+                    value="<%= typeof title != 'undefined' ? title : '' %>"
+                  />
+               </div>
+               <div class="form-group">
+                  <label for="grade">Select Grade</label>
+                  <select name="gradeType" id = "gradeType">
+                     <option value="1">Grade 1</option>
+                     <option value="6">Grade 6</option>
+                  </select>
+               </div>  
+               <div class="form-group">
+                  <input
+                     type="question"
+                     id="question"
+                     name="question"
+                     class="form-control"
+                     placeholder="Enter Question"
+                     value="<%= typeof question != 'undefined' ? question : '' %>"
+                  />
+               </div>
+               <div class="form-group">
+                     <input
+                       type="answer"
+                       id="answer"
+                       name="answer"
+                       class="form-control"
+                       placeholder="Enter Answer"
+                       value="<%= typeof answer != 'undefined' ? answer : '' %>"
+                     />
+               </div>
+                     <button type="submit" class="btn btn-secondary btn-block" name="submit" value="submit">
+                        Submit Homework
+                     </button>
+
+            </form>
+    </div>
+</body>
+
+</html>

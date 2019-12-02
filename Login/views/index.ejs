@@ -3,87 +3,125 @@
 <head></head>
 
 <body>
-
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            SER 515 - Team 18
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mySidebar" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <a class="navbar-brand" href="#"  style="display: block;">
+            MathBuzz
         </a>
     </nav>
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="hwModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Your Homeworks</h5>
+            </div>
+            <div class="modal-body">
+              <a href="/users/homework">Homework 1</a>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="container-fluid">
         <div class="row" id="workspaceSections">
-
-            <div class="col-md-3 widgetSection">
-                <div class="row navbar">
-                    <div class="col">Widgets</div>
-                </div>
-
+           <div class="collapse"  id="mySidebar">
+                <div class = "bg-dark p-4">
+                    <ul class="list-unstyled components">
+                        <li><h5 class="text-white h6">Hi, <%= user.name %></h5></li><br>
+                        <% Homework.forEach(function(homework){ %>
+                            <% if(homework.grade == user.grade){ %>
+                                <li><p class="text-white h7"><a href="/users/studentHomework/<%- homework._id %>"><%= homework.title %></a></p></li>
+                         <% } %>
+                         <% }); %>
+                        <li><p class="text-white h7"><a href="/users/viewHelpPage">Help</a></p></li>
+                        <li><p class="text-white h7"><a href="/users/logout">Logout</a></p></li>
+                    </ul>
+                </div>  
+            </div>
+            <div class="col widgetSection">
+                 <div class="completeWidgets">
                 <div id=Operators>
-                    <p>Operators</p>
+                    <p style="padding-top: .375rem;">Operators</p>
                     <div class="row">
 
-                        <div class="col-1">
-                            <input type="button" id="addition" value="+" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="addition" value="+" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="subtraction" value="-" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="subtraction" value="-" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="multiplication" value="*" onclick="addvalueToWorkSpace(this.id)"
+                    </div> <p></p>
+                        <div class="row">
+                        <div class="col-4 ex_grade1">
+                            <input type="button" class="btn  btn-outline-secondary" id="multiplication" value="*" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="division" value="/" onclick="addvalueToWorkSpace(this.id)"
+                    
+                        <div class="col-4 ex_grade1">
+                            <input type="button" class="btn  btn-outline-secondary" id="division" value="/" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="equalto" value="=" onclick="addvalueToWorkSpace(this.id)"> &nbsp;
+                        <div class="col-4 ex_grade1">
+                            <input type="button" class="btn  btn-outline-secondary" id="dot" value="." onclick="addvalueToWorkSpace(this.id)"> &nbsp;
                         </div>
                     </div>
                 </div>
-
                 <div id=Numbers>
                     <p>Numbers</p>
                     <div class="row">
-                        <div class="col-1">
-                            <input type="button" id="number1" value="1" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="number1" value="1" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="number2" value="2" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="number2" value="2" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="number3" value="3" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="number3" value="3" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="number4" value="4" onclick="addvalueToWorkSpace(this.id)"
+                    </div>   <p></p>
+                    <div class="row"> 
+                  
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="number4" value="4" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="number5" value="5" onclick="addvalueToWorkSpace(this.id)"
+                      
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="number5" value="5" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="number6" value="6" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="number6" value="6" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="number7" value="7" onclick="addvalueToWorkSpace(this.id)"
+                    </div><p></p>
+                    <div class="row">
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="number7" value="7" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="number8" value="8" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="number8" value="8" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="number9" value="9" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="number9" value="9" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="number0" value="0" onclick="addvalueToWorkSpace(this.id)"
+                    </div> <p></p>
+                    <div class="row">
+                        <div class="col-4" style="margin-left: 48.5px;">
+                            <input type="button" class="btn  btn-outline-secondary" id="number0" value="0" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
                     </div>
@@ -93,12 +131,12 @@
                     <p>Paranthesis</p>
                     <div class="row">
 
-                        <div class="col-1">
-                            <input type="button" id="left_Paranthesis" value="(" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-3">
+                            <input type="button" class="btn  btn-outline-secondary" id="left_Paranthesis" value="(" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="right_paranthesis" value=")" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-3">
+                            <input type="button" class="btn  btn-outline-secondary" id="right_paranthesis" value=")" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
                     </div>
@@ -107,107 +145,107 @@
                 <div id="grade9">
                     <p>Variables</p>
                     <div class="row">
-                        <div class="col-1">
-                            <input type="button" id="alphabet-a" value="a" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="alphabet-a" value="a" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="alphabet-b" value="b" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="alphabet-b" value="b" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="alphabet-c" value="c" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="alphabet-c" value="c" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="alphabet-d" value="d" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="alphabet-d" value="d" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="alphabet-e" value="e" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="alphabet-e" value="e" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="alphabet-f" value="f" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="alphabet-f" value="f" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="alphabet-g" value="g" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="alphabet-g" value="g" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="alphabet-h" value="h" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="alphabet-h" value="h" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-4">
                             <input type="button" id="alphabet-i" value="i" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
-                            <input type="button" id="alphabet-j" value="j" onclick="addvalueToWorkSpace(this.id)"
+                        <div class="col-4">
+                            <input type="button" class="btn  btn-outline-secondary" id="alphabet-j" value="j" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-4">
                             <input type="button" id="alphabet-k" value="k" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-4">
                             <input type="button" id="alphabet-l" value="l" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-4">
                             <input type="button" id="alphabet-m" value="m" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-4">
                             <input type="button" id="alphabet-n" value="n" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-4">
                             <input type="button" id="alphabet-o" value="o" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-4">
                             <input type="button" id="alphabet-p" value="p" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-4">
                             <input type="button" id="alphabet-q" value="q" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-4">
                             <input type="button" id="alphabet-r" value="r" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-4">
                             <input type="button" id="alphabet-s" value="s" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-4">
                             <input type="button" id="alphabet-t" value="t" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-4">
                             <input type="button" id="alphabet-u" value="u" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-4">
                             <input type="button" id="alphabet-v" value="v" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-4">
                             <input type="button" id="alphabet-w" value="w" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-4">
                             <input type="button" id="alphabet-x" value="x" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-4">
                             <input type="button" id="alphabet-y" value="y" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-4">
                             <input type="button" id="alphabet-z" value="z" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                             &nbsp;
@@ -215,19 +253,19 @@
                     </div>
                     <p>Other functions</p>
                     <div class="row">
-                        <div class="col-2">
+                        <div class="col-4">
                             <input type="button" id="func-cos" value="cos" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-2">
+                        <div class="col-4">
                             <input type="button" id="func-sin" value="sin" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-2">
+                        <div class="col-4">
                             <input type="button" id="func-tan" value="tan" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-2">
+                        <div class="col-4">
                             <input type="button" id="func-sqrt" value="sqrt" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
@@ -236,19 +274,19 @@
                     <br />
                     <p>Helpers </p>
                     <div class="row">
-                        <div class="col-2">
+                        <div class="col-4">
                             <input type="button" id="help-deg" value="deg" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-3">
+                        <div class="col-4">
                             <input type="button" id="help-new" value="new line" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-1">
+                        <div class="col-4">
                             <input type="button" id="left_Paranthesis" value="(" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
-                        <div class="col-2">
+                        <div class="col-4">
                             <input type="button" id="right_paranthesis" value=")" onclick="addvalueToWorkSpace(this.id)"
                                 draggable="true">
                         </div>
@@ -257,24 +295,35 @@
                     <br />
                 </div>
             </div>
-
-            <div class="col-md-3 mainSection">
-                <div class="row navbar">
-                    <div class="col">Workspace</div>
-                </div>
-                <p align="center" id="workspace"> </p>
             </div>
-            <div class="col-md-3 resultSection">
-                <div class="row navbar">
-                    <div class="col">Result</div>
+
+            <div class="col mainSection">
+                <div class="btn">
+                    <div  id="work" align="center">Workspace
+                            <input class="btn btn-xs btn-outline-info" type="button" id="clear1" value="Clear" onclick="clearWorkspace(this.id)">
+                    </div>
                 </div>
+                <hr>
+                <p align="center" id="workspace" style="height: 65vh;"> </p>
+            </div>
+            <div class="col resultSection">
+                <div class="btn">
+                    <div >Result</div>
+                </div>
+                <hr>
                 <div id="mathResult"></div>
             </div>
-            <div class="col-md-3 historySection">
-                <div class="row navbar">
-                    <div class="col">History</div>
+            <div class="col historySection">
+                <div class="btn">
+                    History
+                        <input class="btn btn-xs btn-outline-info" type="button" id="clear2" value="Clear" onclick="clearHistory(this.id)">
+                    
                 </div>
-                <div id="widgetActivity"></div>
+                <hr>
+                <div id="widgetActivity">
+                        <ul id="actionHistory" class="list-unstyled"></ul>
+
+                </div>
 
             </div>
         </div>
@@ -284,11 +333,16 @@
 
 <script>
     var grade = <%- grade %> ;
+    localStorage.setItem('grade', grade);
 
     switch (grade) {
         case 1:
             document.getElementById("grade6").style.display = "none";
             document.getElementById("grade9").style.display = "none";
+            var element = document.getElementsByClassName("ex_grade1");
+            for (let index = 0; index < element.length; index++) {
+                element[index].style.display = "none";
+            }
             break;
         case 6:
             document.getElementById("grade9").style.display = "none";
@@ -299,7 +353,5 @@
         default:
             break;
     }
-
 </script>
-
 </html>

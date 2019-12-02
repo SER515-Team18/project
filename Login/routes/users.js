@@ -1,17 +1,54 @@
+/*
+*Author: Narendra, Archana
+* Version: 1.1
+*/
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
-// Load User model
+// Load User & Home work model
 const User = require('../models/User');
-const { forwardAuthenticated } = require('../config/auth');
+const HomeWork = require('../models/HomeWork');
+const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
 
 // Login Page
 router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
 
 // Register Page
-router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
+router.get('/register', ensureAuthenticated, (req, res) => res.render('register'));
+
+// Admin Page
+router.get('/adminDashboard', ensureAuthenticated, (req, res) => res.render('adminDashboard'));
+router.get('/homework', ensureAuthenticated, (req, res) => res.render('homework'));
+
+
+// Search User Page
+router.get('/searchUser', ensureAuthenticated, (req, res) => res.render('searchUser'));
+
+// Search User Page to delete
+router.get('/searchUserToDelete', ensureAuthenticated, (req, res) => res.render('searchUserToDelete'));
+
+//createHomeWork Page
+router.get('/createHomeWork', ensureAuthenticated, (req, res) => res.render('createHomeWork'));
+
+//teacherdashboard Page
+router.get('/teacherdashboard', ensureAuthenticated, (req, res) => res.render('teacherdashboard',{
+  user: req.user,
+}));
+
+//teacher view homeworks Page
+router.get('/teacherviewhomeworks', ensureAuthenticated, (req, res) => res.render('teacherViewHomeworks',{
+  user: req.user,
+}));
+
+//teacher Display Homework Page
+router.get('/teacherdisplayhomework', ensureAuthenticated, (req, res) => res.render('teacherDisplayHomework',{
+  user: req.user,
+}));
+
+// Help Page
+router.get('/viewHelpPage', ensureAuthenticated, (req, res) => res.render('help'));
 
 // Register
 router.post('/register', (req, res) => {
@@ -23,10 +60,6 @@ router.post('/register', (req, res) => {
     errors.push({ msg: 'Please enter all fields' });
   }
   
-  if (grade != '1' && grade != '6' && grade != '9'){
-		errors.push({msg: 'Please enter a valid grade'});
-  }
-
   if (password != password2) {
     errors.push({ msg: 'Passwords do not match' });
   }
@@ -86,12 +119,194 @@ router.post('/register', (req, res) => {
 });
 
 // Login
-router.post('/login',
-  passport.authenticate('local'),  
-    function(req, res) {
-      console.log(req.user);
-    res.render('index', {'grade':req.user.grade} );
+router.post('/login', 
+  passport.authenticate('local', { failureRedirect: '/users/login', failureFlash: true }),
+  function(req, res) {
+    if (req.user.email == "admin@gmail.com"){
+      res.redirect('/users/adminDashboard');
+    }
+
+    else if (req.user.grade == "teacher"){
+      res.redirect('/users/teacherdashboard');
+    }
+    else
+    res.redirect('/users/workspace');
+
   });
+  
+// Workspace
+router.get('/workspace', ensureAuthenticated, (req, res) =>{
+  HomeWork.find({}).exec(function(err,homeworks){
+    if(err){
+      console.log(err);
+    }
+    res.render('index', {
+      user: req.user,
+      grade: req.user.grade,
+      "Homework": homeworks
+    });
+  });
+});
+
+//updateUser
+router.post('/updateUser/:id' , (req, res) =>{
+   let updates = {};
+   updates.name = req.body.name;
+   updates.email = req.body.email;
+   updates.grade = req.body.grade;
+
+   let query = {_id:req.params.id};
+
+   User.updateOne(query, updates, function(err){
+          if(err){
+            console.log(err);
+            return;
+          }
+          else{
+            res.redirect('/users/adminDashboard');
+          }
+   });
+});
+
+//Delete User
+router.post('/deleteUser/:id' , (req, res) =>{
+
+  let query = {_id:req.params.id};
+
+  User.remove(query, function(err){
+         if(err){
+           console.log(err);
+           return;
+         }
+         else{
+           res.redirect('/users/adminDashboard');
+         }
+  });
+});
+
+//search User to update
+router.post('/searchUser',(req,res) => {
+  const {email} = req.body;
+  let errors=[];
+  
+  User.findOne({ email: email }).then(user => {
+    
+      if (user) {
+        res.render('updateUser', {user});
+              
+      } else {
+        errors.push({ msg: 'Email does not exist' });
+        res.render('searchUser',{
+          errors
+        })
+          
+    }
+  }
+)});
+
+//search User to delete
+router.post('/searchUserToDelete',(req,res) => {
+  const  {email} = req.body;
+  let errors=[];
+  
+  User.findOne({ email: email }).then(user => {
+    
+      if (user) {
+
+        res.render('deleteUser', {user});
+              
+      } else {
+        errors.push({ msg: 'Email does not exist' });
+        res.render('searchUserToDelete',{
+          errors
+        })
+          
+    }
+  }
+)});
+
+//Add new homework or add questions to a homework.
+router.post('/createHomeWork', (req,res) => {
+    HomeWork.findOne({title: req.body.title, grade: req.body.gradeType}).then(homework =>{
+      if(homework){
+        const questions = {question: req.body.question, answer: req.body.answer};
+        HomeWork.updateOne(
+          { title: req.body.title }, 
+          { $push: { questions: questions } },
+          function (error) {
+            if (error) {
+              console.log(err);
+            } else {
+              req.flash(
+                'success_msg',
+                'Question added. You can add more questions'
+              );
+              return res.redirect('/users/createHomeWork');
+            }
+          }
+        );
+      }
+      else{
+        const newHomeWork = new HomeWork({
+          title: req.body.title,
+          grade: req.body.gradeType,
+          questions:[{
+            question : req.body.question,
+            answer: req.body.answer
+            }]
+          });
+          newHomeWork
+          .save()
+          .then(homework => {
+            req.flash(
+              'success_msg',
+              'New homework added'
+            );
+            res.redirect('/users/createHomeWork');
+          })
+          .catch(err => console.log(err));
+      }
+    })
+  }); 
+
+//list of students
+router.get('/listStudents', ensureAuthenticated, (req,res) =>{
+  User.find({}).exec(function(err,users){
+    if(err){
+      Console.log(err);
+    }
+    res.render('viewStudents', {"Students": users});
+  });
+  
+});
+
+//teacher view homeworks
+router.get('/viewHomeWorksTeacher', ensureAuthenticated, (req,res) => {
+    HomeWork.find({}).exec(function(err, homeworks){
+        if(err){
+          console.log(err);
+        }
+        res.render('teacherViewHomeworks', {"Homework": homeworks});
+    });
+});
+
+//display homeworks for teacher
+router.get('/displayHomeworkTeacher/:id', (req, res) =>{
+    let query = {_id: req.params.id};
+
+    HomeWork.findById(query, function(err, homeworks){
+        res.render('teacherDisplayHomework', {"Questions": homeworks.questions, "Title": homeworks.title});
+    });
+});
+
+//view student homework
+router.get('/studentHomework/:id', (req, res) =>{
+    let query = {_id: req.params.id};
+
+    HomeWork.findById(query, function(err, homeworks){
+        res.render('homework', {"Questions": homeworks.questions});
+    });
+});
 
 // Logout
 router.get('/logout', (req, res) => {

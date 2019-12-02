@@ -39,6 +39,11 @@ Grade-9 user:
 email: archana@gmail.com
 password: archana
 
+# Adding homework questions :
+  The homework questions must be added in this format : 1 _ + 3 = 4. Where _ is the blank that the student must fill using their homework page.
+  
+  
+  
 Note:
 --
 Disable the "Block third-party cookies" setting in Google chrome browser
